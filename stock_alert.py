@@ -139,7 +139,7 @@ def send_telegram(text):
 # DART 공시
 # ─────────────────────────────────────────────────────────
 def resolve_corp_codes(state):
-    """
+    """name, code = stock
     종목코드 → DART 고유번호(corp_code) 매핑.
     한 번 조회하면 state.json 에 저장해두고 다시 받지 않습니다.
     """
@@ -297,19 +297,21 @@ def main():
 
     for stock in WATCHLIST:
         name, code = stock["name"], stock["code"]
+       is_new = f"news:{code}" not in state["seen"] and f"dart:{code}" not in state["seen"]
+       quiet = first_run or is_new
 
         # 공시
         if DISCLOSURE_ENABLED and code in corp_codes:
             for item in fetch_disclosures(corp_codes[code]):
                 key = item.get("rcept_no", "")
-                if key and mark_seen(state, f"dart:{code}", key) and not first_run:
+                if key and mark_seen(state, f"dart:{code}", key) and not quiet:
                     messages.append(format_disclosure(item))
 
         # 뉴스
         if NEWS_ENABLED:
             for art in fetch_news(name):
                 key = art["link"][:200]
-                if mark_seen(state, f"news:{code}", key) and not first_run:
+                if mark_seen(state, f"news:{code}", key) and not quiet:
                     messages.append(format_news(name, art))
 
     if first_run:
