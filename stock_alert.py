@@ -297,8 +297,8 @@ def main():
 
     for stock in WATCHLIST:
         name, code = stock["name"], stock["code"]
-       is_new = f"news:{code}" not in state["seen"] and f"dart:{code}" not in state["seen"]
-       quiet = first_run or is_new
+        is_new = f"news:{code}" not in state["seen"] and f"dart:{code}" not in state["seen"]
+        quiet = first_run or is_new
 
         # 공시
         if DISCLOSURE_ENABLED and code in corp_codes:
