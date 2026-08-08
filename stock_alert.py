@@ -233,7 +233,7 @@ def format_disclosure(item):
 # ─────────────────────────────────────────────────────────
 def fetch_news(name):
     """종목명이 정확히 들어간 최신 기사 목록을 오래된 순으로 반환합니다."""
-    query = urllib.parse.quote(f'"{name}"')
+    query = urllib.parse.quote(f'"{name}" when:1d')
     url = (f"https://news.google.com/rss/search?q={query}"
            f"&hl=ko&gl=KR&ceid=KR:ko")
     try:
