@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-티엘비(356860) 공시 + 뉴스 텔레그램 알림
+관심 종목 공시 + 뉴스 텔레그램 알림
 - DART OpenAPI에서 신규 공시를 가져오고
 - 구글뉴스 RSS에서 신규 기사를 가져와
 - 텔레그램으로 보냅니다.
@@ -32,21 +32,22 @@ from html import unescape
 # ─────────────────────────────────────────────────────────
 WATCHLIST = [
     {"name": "티엘비", "code": "356860"},
-    {"name": "DL이앤씨", "code": "375500"},  
-    {"name": "심텍", "code": "222800"}, 
+    {"name": "DL이앤씨", "code": "375500"},
+    {"name": "심텍", "code": "222800"},
     {"name": "씨어스", "code": "458870"},
     {"name": "삼화콘덴서", "code": "001820"},
-    {"name": "sk이터닉스", "code": "475150"},
+    {"name": "SK이터닉스", "code": "475150"},
     {"name": "ISC", "code": "095340"},
     {"name": "에스티아이", "code": "039440"},
     {"name": "프로텍", "code": "053610"},
     {"name": "원텍", "code": "336570"},
     {"name": "씨엠티엑스", "code": "388210"},
-    # {"name": "SK하이닉스", "code": "000660"},   # 이런 식으로 줄만 추가
 ]
 
 NEWS_ENABLED = True          # 뉴스가 시끄러우면 False 로
 DISCLOSURE_ENABLED = True    # 공시 알림
+NEWS_PERIOD = "1d"           # 뉴스 검색 기간: 1d=24시간, 2d=이틀, 7d=일주일
+TITLE_ONLY = True            # True 면 제목에 종목명이 있는 기사만 (본문 언급 제외)
 NEWS_LOOKBACK_DAYS = 2       # 공시 조회 기간(일)
 STATE_FILE = "state.json"    # 중복 발송 방지용 기록 파일
 MAX_SEEN = 400               # 기록 보관 개수(종목·유형별)
@@ -106,6 +107,11 @@ def esc(text):
                 .replace(">", "&gt;"))
 
 
+def norm(text):
+    """비교용 정규화 — 공백을 없애고 소문자로."""
+    return text.replace(" ", "").lower()
+
+
 # ─────────────────────────────────────────────────────────
 # 텔레그램 발송
 # ─────────────────────────────────────────────────────────
@@ -139,7 +145,7 @@ def send_telegram(text):
 # DART 공시
 # ─────────────────────────────────────────────────────────
 def resolve_corp_codes(state):
-    """name, code = stock
+    """
     종목코드 → DART 고유번호(corp_code) 매핑.
     한 번 조회하면 state.json 에 저장해두고 다시 받지 않습니다.
     """
@@ -232,8 +238,11 @@ def format_disclosure(item):
 # 구글뉴스 RSS
 # ─────────────────────────────────────────────────────────
 def fetch_news(name):
-    """종목명이 정확히 들어간 최신 기사 목록을 오래된 순으로 반환합니다."""
-    query = urllib.parse.quote(f'"{name}" when:1d')
+    """종목명이 제목에 들어간 최신 기사를 오래된 순으로 반환합니다."""
+    keyword = f'"{name}"'
+    if NEWS_PERIOD:
+        keyword += f" when:{NEWS_PERIOD}"
+    query = urllib.parse.quote(keyword)
     url = (f"https://news.google.com/rss/search?q={query}"
            f"&hl=ko&gl=KR&ceid=KR:ko")
     try:
@@ -249,6 +258,7 @@ def fetch_news(name):
         return []
 
     articles = []
+    skipped = 0
     for item in root.iter("item"):
         title = unescape((item.findtext("title") or "").strip())
         link = (item.findtext("link") or "").strip()
@@ -259,8 +269,15 @@ def fetch_news(name):
         # 구글뉴스 제목은 "기사제목 - 언론사" 형태 → 언론사 부분 분리
         if source and title.endswith(f" - {source}"):
             title = title[: -(len(source) + 3)]
+        # 제목에 종목명이 없으면 제외 (본문에만 언급된 기사 걸러내기)
+        if TITLE_ONLY and norm(name) not in norm(title):
+            skipped += 1
+            continue
         articles.append({"title": title, "link": link,
                          "source": source, "pub": pub})
+
+    if skipped:
+        print(f"[뉴스] {name}: 제목 불일치 {skipped}건 제외")
 
     articles.reverse()   # RSS는 최신순 → 오래된 것부터 발송
     return articles
@@ -297,6 +314,7 @@ def main():
 
     for stock in WATCHLIST:
         name, code = stock["name"], stock["code"]
+        # 새로 추가된 종목은 첫 회차에 조용히 기록만 (과거 기사 폭탄 방지)
         is_new = f"news:{code}" not in state["seen"] and f"dart:{code}" not in state["seen"]
         quiet = first_run or is_new
 
