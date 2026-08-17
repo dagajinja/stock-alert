@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 관심 종목 공시 + 뉴스 텔레그램 알림
-- DART OpenAPI에서 신규 공시를 가져오고
-- 구글뉴스 RSS에서 신규 기사를 가져와
-- 텔레그램으로 보냅니다.
 
-외부 패키지 설치가 필요 없습니다. (파이썬 표준 라이브러리만 사용)
+- DART OpenAPI에서 신규 공시를 가져오고
+- 구글뉴스 RSS에서 신규 기사를 가져와 텔레그램으로 보냅니다.
+- 수동 실행(Run workflow)일 때는 진단 요약을 텔레그램으로 함께 보냅니다.
 
 환경변수 3개가 필요합니다:
   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, DART_API_KEY
@@ -15,7 +14,6 @@
 import io
 import json
 import os
-import re
 import ssl
 import sys
 import time
@@ -29,12 +27,13 @@ from html import unescape
 
 # ─────────────────────────────────────────────────────────
 # 설정 — 종목을 추가하려면 여기만 고치면 됩니다
+#   alias 는 선택 사항. 제목에 다르게 표기되는 이름을 적어두면 같이 잡힙니다.
 # ─────────────────────────────────────────────────────────
 WATCHLIST = [
-    {"name": "티엘비", "code": "356860"},
-    {"name": "DL이앤씨", "code": "375500"},
+    {"name": "티엘비", "code": "356860", "alias": ["TLB"]},
+    {"name": "DL이앤씨", "code": "375500", "alias": ["DL E&C"]},
     {"name": "심텍", "code": "222800"},
-    {"name": "씨어스", "code": "458870"},
+    {"name": "씨어스", "code": "458870", "alias": ["씨어스테크놀로지"]},
     {"name": "삼화콘덴서", "code": "001820"},
     {"name": "SK이터닉스", "code": "475150"},
     {"name": "ISC", "code": "095340"},
@@ -44,13 +43,13 @@ WATCHLIST = [
     {"name": "씨엠티엑스", "code": "388210"},
 ]
 
-NEWS_ENABLED = True          # 뉴스가 시끄러우면 False 로
-DISCLOSURE_ENABLED = True    # 공시 알림
-NEWS_PERIOD = "1d"           # 뉴스 검색 기간: 1d=24시간, 2d=이틀, 7d=일주일
-TITLE_ONLY = True            # True 면 제목에 종목명이 있는 기사만 (본문 언급 제외)
-NEWS_LOOKBACK_DAYS = 2       # 공시 조회 기간(일)
-STATE_FILE = "state.json"    # 중복 발송 방지용 기록 파일
-MAX_SEEN = 400               # 기록 보관 개수(종목·유형별)
+NEWS_ENABLED = True          # 뉴스 알림 켜기/끄기
+DISCLOSURE_ENABLED = True    # 공시 알림 켜기/끄기
+NEWS_PERIOD = "3d"           # 뉴스 검색 기간: 1d / 2d / 3d / 7d — 빈칸이면 제한 없음
+TITLE_ONLY = True            # True 면 제목에 종목명이 있는 기사만
+NEWS_LOOKBACK_DAYS = 3       # 공시 조회 기간(일)
+STATE_FILE = "state.json"
+MAX_SEEN = 400
 
 KST = timezone(timedelta(hours=9))
 UA = "Mozilla/5.0 (compatible; StockAlertBot/1.0)"
@@ -59,12 +58,14 @@ BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 DART_KEY = os.environ.get("DART_API_KEY", "").strip()
 
+# 수동 실행(Run workflow)이면 진단 요약을 텔레그램으로 보냅니다
+IS_MANUAL = os.environ.get("GITHUB_EVENT_NAME", "") == "workflow_dispatch"
+
 
 # ─────────────────────────────────────────────────────────
 # 공통 유틸
 # ─────────────────────────────────────────────────────────
 def http_get(url, timeout=30):
-    """URL을 GET 해서 bytes 로 돌려줍니다."""
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     ctx = ssl.create_default_context()
     with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
@@ -90,7 +91,7 @@ def save_state(state):
 
 
 def mark_seen(state, bucket, key):
-    """이미 보낸 항목인지 확인하고, 아니면 기록합니다."""
+    """이미 보낸 항목이면 False, 처음 보는 것이면 기록하고 True."""
     seen = state["seen"].setdefault(bucket, [])
     if key in seen:
         return False
@@ -101,19 +102,27 @@ def mark_seen(state, bucket, key):
 
 
 def esc(text):
-    """텔레그램 HTML 모드용 이스케이프."""
     return (text.replace("&", "&amp;")
                 .replace("<", "&lt;")
                 .replace(">", "&gt;"))
 
 
 def norm(text):
-    """비교용 정규화 — 공백을 없애고 소문자로."""
-    return text.replace(" ", "").lower()
+    """비교용 정규화 — 공백·가운뎃점 제거 후 소문자."""
+    for ch in (" ", "·", "‧", "・"):
+        text = text.replace(ch, "")
+    return text.lower()
+
+
+def title_matches(stock, title):
+    """제목에 종목명(또는 별칭)이 들어 있는지."""
+    t = norm(title)
+    names = [stock["name"]] + list(stock.get("alias", []))
+    return any(norm(n) in t for n in names)
 
 
 # ─────────────────────────────────────────────────────────
-# 텔레그램 발송
+# 텔레그램
 # ─────────────────────────────────────────────────────────
 def send_telegram(text):
     if not BOT_TOKEN or not CHAT_ID:
@@ -128,14 +137,15 @@ def send_telegram(text):
         "disable_web_page_preview": "true",
     }).encode("utf-8")
 
-    req = urllib.request.Request(url, data=payload,
-                                 headers={"User-Agent": UA})
+    req = urllib.request.Request(url, data=payload, headers={"User-Agent": UA})
     try:
         with urllib.request.urlopen(req, timeout=20) as resp:
             body = json.loads(resp.read().decode("utf-8"))
+            if not body.get("ok"):
+                print(f"[텔레그램 오류] {body}")
             return bool(body.get("ok"))
     except urllib.error.HTTPError as e:
-        print(f"[텔레그램 오류] {e.code} {e.read().decode('utf-8', 'ignore')[:200]}")
+        print(f"[텔레그램 오류] {e.code} {e.read().decode('utf-8', 'ignore')[:300]}")
     except Exception as e:
         print(f"[텔레그램 오류] {e}")
     return False
@@ -145,18 +155,13 @@ def send_telegram(text):
 # DART 공시
 # ─────────────────────────────────────────────────────────
 def resolve_corp_codes(state):
-    """
-    종목코드 → DART 고유번호(corp_code) 매핑.
-    한 번 조회하면 state.json 에 저장해두고 다시 받지 않습니다.
-    """
     cache = state.setdefault("corp_codes", {})
     missing = [s["code"] for s in WATCHLIST if s["code"] not in cache]
     if not missing:
         return cache
 
     print("[DART] 기업 고유번호 목록을 내려받는 중… (최초 1회)")
-    url = ("https://opendart.fss.or.kr/api/corpCode.xml"
-           f"?crtfc_key={DART_KEY}")
+    url = f"https://opendart.fss.or.kr/api/corpCode.xml?crtfc_key={DART_KEY}"
     try:
         raw = http_get(url, timeout=90)
     except Exception as e:
@@ -167,8 +172,7 @@ def resolve_corp_codes(state):
         with zipfile.ZipFile(io.BytesIO(raw)) as z:
             xml_bytes = z.read(z.namelist()[0])
     except zipfile.BadZipFile:
-        # zip 이 아니면 대개 API 키 오류 메시지가 XML 로 돌아옵니다
-        print(f"[DART 오류] 응답이 zip 이 아닙니다. API 키를 확인하세요.\n"
+        print("[DART 오류] 응답이 zip 이 아닙니다. API 키를 확인하세요.\n"
               f"{raw[:300].decode('utf-8', 'ignore')}")
         return cache
 
@@ -188,7 +192,6 @@ def resolve_corp_codes(state):
 
 
 def fetch_disclosures(corp_code):
-    """최근 N일치 공시 목록을 최신순으로 반환합니다."""
     today = datetime.now(KST)
     bgn = (today - timedelta(days=NEWS_LOOKBACK_DAYS)).strftime("%Y%m%d")
     end = today.strftime("%Y%m%d")
@@ -209,14 +212,13 @@ def fetch_disclosures(corp_code):
         return []
 
     status = data.get("status")
-    if status == "013":          # 조회된 데이터 없음
+    if status == "013":
         return []
     if status != "000":
         print(f"[DART 오류] status={status} {data.get('message')}")
         return []
 
     items = data.get("list", [])
-    # 접수번호가 클수록 최신 → 오래된 것부터 보내도록 정렬
     items.sort(key=lambda x: x.get("rcept_no", ""))
     return items
 
@@ -237,27 +239,30 @@ def format_disclosure(item):
 # ─────────────────────────────────────────────────────────
 # 구글뉴스 RSS
 # ─────────────────────────────────────────────────────────
-def fetch_news(name):
-    """종목명이 제목에 들어간 최신 기사를 오래된 순으로 반환합니다."""
+def fetch_news(stock):
+    """(기사목록, RSS원본건수, 제목불일치건수) 를 돌려줍니다."""
+    name = stock["name"]
     keyword = f'"{name}"'
     if NEWS_PERIOD:
         keyword += f" when:{NEWS_PERIOD}"
     query = urllib.parse.quote(keyword)
     url = (f"https://news.google.com/rss/search?q={query}"
            f"&hl=ko&gl=KR&ceid=KR:ko")
+
     try:
         raw = http_get(url)
     except Exception as e:
         print(f"[뉴스 오류] {name} RSS 실패: {e}")
-        return []
+        return [], 0, 0
 
     try:
         root = ET.fromstring(raw)
     except ET.ParseError as e:
-        print(f"[뉴스 오류] RSS 파싱 실패: {e}")
-        return []
+        print(f"[뉴스 오류] {name} RSS 파싱 실패: {e}")
+        return [], 0, 0
 
     articles = []
+    total = 0
     skipped = 0
     for item in root.iter("item"):
         title = unescape((item.findtext("title") or "").strip())
@@ -266,21 +271,18 @@ def fetch_news(name):
         pub = (item.findtext("pubDate") or "").strip()
         if not title or not link:
             continue
+        total += 1
         # 구글뉴스 제목은 "기사제목 - 언론사" 형태 → 언론사 부분 분리
         if source and title.endswith(f" - {source}"):
             title = title[: -(len(source) + 3)]
-        # 제목에 종목명이 없으면 제외 (본문에만 언급된 기사 걸러내기)
-        if TITLE_ONLY and norm(name) not in norm(title):
+        if TITLE_ONLY and not title_matches(stock, title):
             skipped += 1
             continue
         articles.append({"title": title, "link": link,
                          "source": source, "pub": pub})
 
-    if skipped:
-        print(f"[뉴스] {name}: 제목 불일치 {skipped}건 제외")
-
     articles.reverse()   # RSS는 최신순 → 오래된 것부터 발송
-    return articles
+    return articles, total, skipped
 
 
 def format_news(name, art):
@@ -302,6 +304,7 @@ def main():
 
     state = load_state()
     first_run = not state["initialized"]
+    now = datetime.now(KST).strftime("%m/%d %H:%M")
 
     if first_run:
         print("[안내] 첫 실행입니다. 기존 항목은 '읽음' 처리하고 알림은 보내지 않습니다.")
@@ -311,26 +314,36 @@ def main():
         print("[안내] DART_API_KEY 가 없어 공시 알림을 건너뜁니다.")
 
     messages = []
+    report = []          # 진단용 종목별 집계
 
     for stock in WATCHLIST:
         name, code = stock["name"], stock["code"]
         # 새로 추가된 종목은 첫 회차에 조용히 기록만 (과거 기사 폭탄 방지)
-        is_new = f"news:{code}" not in state["seen"] and f"dart:{code}" not in state["seen"]
+        is_new = (f"news:{code}" not in state["seen"]
+                  and f"dart:{code}" not in state["seen"])
         quiet = first_run or is_new
 
-        # 공시
+        n_dart = 0
         if DISCLOSURE_ENABLED and code in corp_codes:
             for item in fetch_disclosures(corp_codes[code]):
                 key = item.get("rcept_no", "")
                 if key and mark_seen(state, f"dart:{code}", key) and not quiet:
                     messages.append(format_disclosure(item))
+                    n_dart += 1
 
-        # 뉴스
+        total = skipped = n_news = 0
         if NEWS_ENABLED:
-            for art in fetch_news(name):
+            articles, total, skipped = fetch_news(stock)
+            for art in articles:
                 key = art["link"][:200]
                 if mark_seen(state, f"news:{code}", key) and not quiet:
                     messages.append(format_news(name, art))
+                    n_news += 1
+
+        print(f"[{name}] RSS {total}건 / 제목불일치 {skipped}건 제외 "
+              f"→ 신규 뉴스 {n_news}건, 신규 공시 {n_dart}건"
+              + (" (신규종목 – 조용히 등록)" if quiet else ""))
+        report.append(f"{name}: RSS {total} → 통과 {total - skipped}, 신규 {n_news}")
 
     if first_run:
         send_telegram(
@@ -343,11 +356,22 @@ def main():
         return
 
     print(f"[결과] 신규 항목 {len(messages)}건")
+
     for i, msg in enumerate(messages):
         if not send_telegram(msg):
             print("[경고] 발송 실패 — 다음 실행 때 다시 시도되지 않습니다.")
         if i < len(messages) - 1:
-            time.sleep(1)   # 텔레그램 초당 발송 제한 회피
+            time.sleep(1)
+
+    # 수동 실행일 때만 진단 요약 발송
+    if IS_MANUAL:
+        send_telegram(
+            f"🔧 <b>진단 ({now})</b>\n"
+            f"발송한 신규 항목: {len(messages)}건\n\n"
+            + esc("\n".join(report))
+            + f"\n\n설정: 기간 {NEWS_PERIOD or '제한없음'} · "
+              f"제목필터 {'켜짐' if TITLE_ONLY else '꺼짐'}"
+        )
 
     save_state(state)
 
