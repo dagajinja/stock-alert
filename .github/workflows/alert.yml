@@ -1,10 +1,10 @@
-# 이 파일은 저장소의 .github/workflows/alert.yml 경로에 두어야 합니다.
+# 이 파일은 저장소의 .github/workflows/alert.yml 경로에 있습니다.
 name: stock-alert
 
 on:
   schedule:
-    - cron: "*/10 0,1,2,3,4,5,6,23 * * 1-5"   # UTC 기준 (KST 08:00~15:59 평일)
-  workflow_dispatch:                          # 수동 실행 버튼
+    - cron: "*/15 * * * *"    # 15분마다 (GitHub 사정으로 밀릴 수 있음)
+  workflow_dispatch:          # 수동 실행 버튼
 
 permissions:
   contents: write
@@ -28,6 +28,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
         run: python stock_alert.py
 
       - name: 발송 기록 저장
