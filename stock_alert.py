@@ -179,7 +179,14 @@ SPACE_RE = re.compile(r"[ \t\r\f\v]+")
 NEWLINE_RE = re.compile(r"\n{2,}")
 SENT_RE = re.compile(r"(?<=[.!?])\s+")   # 마침표 뒤 공백에서만 분리 (13.6% 안 깨짐)
 NOISE_RE = re.compile(
-    r"(무단\s*전재|재배포\s*금지|저작권자|기자\s*=|Copyright|ⓒ|@[\w.]+\.(com|co\.kr))")
+    r"(무단\s*전재|재배포\s*금지|저작권자|저작권|기자\s*=|Copyright|ⓒ|©"
+    r"|[Aa]ll\s+[Rr]ights\s+[Rr]eserved|@[\w.]+\.(com|co\.kr|kr|net)"
+    r"|구독하기|구독자|댓글|로그인|회원가입|앱\s*다운|뉴스레터|바로가기"
+    r"|관련\s*기사|많이\s*본|추천\s*기사|이\s*시각|주요\s*뉴스"
+    r"|자바스크립트|javascript|브라우저를|쿠키|개인정보|이용약관"
+    r"|무료로\s*보기|기사\s*제보|보도자료|광고)", re.I)
+
+HANGUL_RE = re.compile(r"[가-힣]")
 
 
 def fetch_article_text(url):
@@ -223,25 +230,47 @@ def fetch_article_text(url):
 # ─────────────────────────────────────────────────────────
 # 요약 1 — API 없이 앞 문장 발췌
 # ─────────────────────────────────────────────────────────
-def lead_summary(body):
-    """기사 앞부분에서 핵심 문장 몇 개를 뽑습니다. 완전 무료."""
+def is_sentence(s):
+    """기사 본문다운 문장인지 판정합니다."""
+    if len(s) < 25 or len(s) > 300:
+        return False
+    if NOISE_RE.search(s):                       # 저작권·메뉴·안내 문구 제외
+        return False
+    if len(HANGUL_RE.findall(s)) < 15:           # 한글이 거의 없으면 본문 아님
+        return False
+    if not re.search(r"(다|음|임)[.\s]*$", s):     # 한국어 서술문 끝맺음 확인
+        return False
+    return True
+
+
+def lead_summary(body, name=None):
+    """기사에서 핵심 문장 몇 개를 뽑습니다. 완전 무료.
+    종목명이 들어간 문장을 우선으로 잡고, 쓸 만한 문장이 없으면 None."""
     if not body:
         return None
 
-    picked = []
-    for s in SENT_RE.split(body):
-        s = s.strip()
-        if len(s) < 20 or len(s) > 300:
-            continue
-        if NOISE_RE.search(s):          # 저작권·기자 표기 줄 제외
-            continue
-        picked.append(s)
-        if len(picked) >= LEAD_SENTENCES:
-            break
+    sents = [s.strip() for s in SENT_RE.split(body)]
+    good = [s for s in sents if is_sentence(s)]
+    if not good:
+        return None
 
+    # 종목명이 처음 등장하는 문장부터 시작 (앞쪽 잡문 건너뛰기)
+    start = 0
+    if name:
+        key = norm(name)
+        for i, s in enumerate(good):
+            if key in norm(s):
+                start = i
+                break
+
+    picked = good[start:start + LEAD_SENTENCES]
     if not picked:
         return None
-    return " ".join(picked)
+
+    text = " ".join(picked)
+    if len(text) > 400:
+        text = text[:400].rsplit(" ", 1)[0] + "…"
+    return text
 
 
 # ─────────────────────────────────────────────────────────
@@ -328,9 +357,9 @@ def make_summary(name, title, link):
             time.sleep(GEMINI_DELAY)
             return s, "ai"
         # AI 가 실패하면 발췌로 대체
-        return lead_summary(body), "발췌"
+        return lead_summary(body, name), "발췌"
 
-    return lead_summary(body), "발췌"
+    return lead_summary(body, name), "발췌"
 
 
 # ─────────────────────────────────────────────────────────
