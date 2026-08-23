@@ -45,7 +45,7 @@ WATCHLIST = [
     {"name": "에스티아이", "code": "039440"},
     {"name": "프로텍", "code": "053610"},
     {"name": "원텍", "code": "336570"},
-    {"name": "씨엠텍스", "code": "388210"},
+    {"name": "씨엠티엑스", "code": "388210", "alias": ["CMTX"]},
 ]
 
 NEWS_ENABLED = True          # 뉴스 알림 켜기/끄기
