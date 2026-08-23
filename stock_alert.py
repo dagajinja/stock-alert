@@ -36,7 +36,10 @@ from html import unescape
 # ─────────────────────────────────────────────────────────
 WATCHLIST = [
     {"name": "티엘비", "code": "356860", "alias": ["TLB"]},
-    {"name": "DL이앤씨", "code": "375500", "alias": ["DL E&C"]},
+    # strict: 제목 앞쪽에 종목명이 나올 때만 통과 (나열형 기사 제외)
+    # exclude: 제목에 이 단어가 있으면 제외
+    {"name": "DL이앤씨", "code": "375500", "alias": ["DL E&C"],
+     "strict": True, "exclude": ["BRIEF", "브리핑", "건설주", "건설사들"]},
     {"name": "심텍", "code": "222800"},
     {"name": "씨어스", "code": "458870", "alias": ["씨어스테크놀로지"]},
     {"name": "삼화콘덴서", "code": "001820"},
@@ -52,6 +55,7 @@ NEWS_ENABLED = True          # 뉴스 알림 켜기/끄기
 DISCLOSURE_ENABLED = True    # 공시 알림 켜기/끄기
 NEWS_PERIOD = "3d"           # 뉴스 검색 기간: 1d / 2d / 3d / 7d — 빈칸이면 제한 없음
 TITLE_ONLY = True            # True 면 제목에 종목명이 있는 기사만
+STRICT_POS = 6               # strict 종목: 제목 앞 몇 글자 안에 이름이 있어야 하는지
 NEWS_LOOKBACK_DAYS = 3       # 공시 조회 기간(일)
 
 SUMMARY_MODE = "gemini"      # "gemini" / "lead" / "off"
@@ -134,10 +138,30 @@ def norm(text):
     return text.lower()
 
 
+BRACKET_RE = re.compile(r"^\s*(\[[^\]]*\]|【[^】]*】|<[^>]*>)+")
+
+
 def title_matches(stock, title):
+    """제목에 종목명이 있는지. strict 종목은 앞쪽에 나올 때만 인정."""
     t = norm(title)
+
+    for kw in stock.get("exclude", []):          # 제외 단어가 있으면 탈락
+        if norm(kw) in t:
+            return False
+
     names = [stock["name"]] + list(stock.get("alias", []))
-    return any(norm(n) in t for n in names)
+    if not any(norm(n) in t for n in names):
+        return False
+
+    if stock.get("strict"):
+        # [특징주] [단독] 같은 머리표를 떼고 나서 위치를 잽니다
+        head = BRACKET_RE.sub("", title).strip()
+        head = norm(head)
+        positions = [head.find(norm(n)) for n in names]
+        positions = [pos for pos in positions if pos >= 0]
+        if not positions or min(positions) > STRICT_POS:
+            return False                          # 뒤쪽에만 언급 → 나열형으로 보고 제외
+    return True
 
 
 # ─────────────────────────────────────────────────────────
