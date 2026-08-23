@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-관심 종목 공시 + 뉴스 텔레그램 알림
+관심 종목 공시 + 뉴스 텔레그램 알림 (기사 요약 포함)
 
-- DART OpenAPI에서 신규 공시를 가져오고
-- 구글뉴스 RSS에서 신규 기사를 가져와 텔레그램으로 보냅니다.
-- 수동 실행(Run workflow)일 때는 진단 요약을 텔레그램으로 함께 보냅니다.
+요약 방식은 SUMMARY_MODE 로 고릅니다.
+  "gemini" : 구글 Gemini API 무료 등급으로 AI 요약 (GEMINI_API_KEY 필요)
+  "lead"   : API 없이 기사 앞부분 핵심 문장 발췌 (완전 무료, 키 불필요)
+  "off"    : 요약 안 함
 
-환경변수 3개가 필요합니다:
-  TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, DART_API_KEY
+gemini 로 두고 키가 없으면 자동으로 lead 방식으로 넘어갑니다.
+
+환경변수:
+  TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, DART_API_KEY  (필수)
+  GEMINI_API_KEY                                      (gemini 방식일 때만)
 """
 
 import io
 import json
 import os
+import re
 import ssl
 import sys
 import time
@@ -40,7 +45,7 @@ WATCHLIST = [
     {"name": "에스티아이", "code": "039440"},
     {"name": "프로텍", "code": "053610"},
     {"name": "원텍", "code": "336570"},
-    {"name": "씨엠티엑스", "code": "388210"},
+    {"name": "씨엠텍스", "code": "388210"},
 ]
 
 NEWS_ENABLED = True          # 뉴스 알림 켜기/끄기
@@ -48,27 +53,44 @@ DISCLOSURE_ENABLED = True    # 공시 알림 켜기/끄기
 NEWS_PERIOD = "3d"           # 뉴스 검색 기간: 1d / 2d / 3d / 7d — 빈칸이면 제한 없음
 TITLE_ONLY = True            # True 면 제목에 종목명이 있는 기사만
 NEWS_LOOKBACK_DAYS = 3       # 공시 조회 기간(일)
+
+SUMMARY_MODE = "gemini"      # "gemini" / "lead" / "off"
+GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_DELAY = 5             # 무료 등급 분당 한도(15회) 회피용 대기 초
+MAX_SUMMARIES = 20           # 한 번 실행에서 요약할 최대 건수
+ARTICLE_CHARS = 2500         # 기사 본문에서 읽어들일 글자 수
+LEAD_SENTENCES = 2           # lead 방식일 때 뽑을 문장 수
+
 STATE_FILE = "state.json"
 MAX_SEEN = 400
 
 KST = timezone(timedelta(hours=9))
-UA = "Mozilla/5.0 (compatible; StockAlertBot/1.0)"
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/120.0 Safari/537.36")
 
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 DART_KEY = os.environ.get("DART_API_KEY", "").strip()
+GEMINI_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 
-# 수동 실행(Run workflow)이면 진단 요약을 텔레그램으로 보냅니다
 IS_MANUAL = os.environ.get("GITHUB_EVENT_NAME", "") == "workflow_dispatch"
+
+# 키가 없으면 gemini → lead 로 자동 전환
+MODE = SUMMARY_MODE
+if MODE == "gemini" and not GEMINI_KEY:
+    MODE = "lead"
 
 
 # ─────────────────────────────────────────────────────────
 # 공통 유틸
 # ─────────────────────────────────────────────────────────
-def http_get(url, timeout=30):
+def http_get(url, timeout=30, raw_response=False):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     ctx = ssl.create_default_context()
-    with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:
+    resp = urllib.request.urlopen(req, timeout=timeout, context=ctx)
+    if raw_response:
+        return resp
+    with resp:
         return resp.read()
 
 
@@ -91,7 +113,6 @@ def save_state(state):
 
 
 def mark_seen(state, bucket, key):
-    """이미 보낸 항목이면 False, 처음 보는 것이면 기록하고 True."""
     seen = state["seen"].setdefault(bucket, [])
     if key in seen:
         return False
@@ -108,14 +129,12 @@ def esc(text):
 
 
 def norm(text):
-    """비교용 정규화 — 공백·가운뎃점 제거 후 소문자."""
     for ch in (" ", "·", "‧", "・"):
         text = text.replace(ch, "")
     return text.lower()
 
 
 def title_matches(stock, title):
-    """제목에 종목명(또는 별칭)이 들어 있는지."""
     t = norm(title)
     names = [stock["name"]] + list(stock.get("alias", []))
     return any(norm(n) in t for n in names)
@@ -149,6 +168,169 @@ def send_telegram(text):
     except Exception as e:
         print(f"[텔레그램 오류] {e}")
     return False
+
+
+# ─────────────────────────────────────────────────────────
+# 기사 본문 읽기
+# ─────────────────────────────────────────────────────────
+TAG_RE = re.compile(r"<(script|style)[^>]*>.*?</\1>", re.S | re.I)
+STRIP_RE = re.compile(r"<[^>]+>")
+SPACE_RE = re.compile(r"[ \t\r\f\v]+")
+NEWLINE_RE = re.compile(r"\n{2,}")
+SENT_RE = re.compile(r"(?<=[.!?])\s+")   # 마침표 뒤 공백에서만 분리 (13.6% 안 깨짐)
+NOISE_RE = re.compile(
+    r"(무단\s*전재|재배포\s*금지|저작권자|기자\s*=|Copyright|ⓒ|@[\w.]+\.(com|co\.kr))")
+
+
+def fetch_article_text(url):
+    """기사 페이지에서 본문 텍스트를 뽑아냅니다. 실패하면 빈 문자열."""
+    try:
+        resp = http_get(url, timeout=20, raw_response=True)
+        raw = resp.read(400_000)
+        charset = resp.headers.get_content_charset()
+        resp.close()
+    except Exception as e:
+        print(f"  [본문] 가져오기 실패: {str(e)[:80]}")
+        return ""
+
+    html = None
+    for enc in (charset, "utf-8", "euc-kr", "cp949"):
+        if not enc:
+            continue
+        try:
+            html = raw.decode(enc)
+            break
+        except (UnicodeDecodeError, LookupError):
+            continue
+    if html is None:
+        html = raw.decode("utf-8", "ignore")
+
+    text = TAG_RE.sub(" ", html)
+    text = STRIP_RE.sub("\n", text)
+    text = unescape(text)
+    text = SPACE_RE.sub(" ", text)
+    text = NEWLINE_RE.sub("\n", text)
+
+    # 짧은 줄(메뉴·버튼 등)은 버리고 문장다운 줄만 남깁니다
+    lines = [ln.strip() for ln in text.split("\n")]
+    body = " ".join(ln for ln in lines if len(ln) >= 25)
+
+    if len(body) < 150:
+        return ""
+    return body[:ARTICLE_CHARS]
+
+
+# ─────────────────────────────────────────────────────────
+# 요약 1 — API 없이 앞 문장 발췌
+# ─────────────────────────────────────────────────────────
+def lead_summary(body):
+    """기사 앞부분에서 핵심 문장 몇 개를 뽑습니다. 완전 무료."""
+    if not body:
+        return None
+
+    picked = []
+    for s in SENT_RE.split(body):
+        s = s.strip()
+        if len(s) < 20 or len(s) > 300:
+            continue
+        if NOISE_RE.search(s):          # 저작권·기자 표기 줄 제외
+            continue
+        picked.append(s)
+        if len(picked) >= LEAD_SENTENCES:
+            break
+
+    if not picked:
+        return None
+    return " ".join(picked)
+
+
+# ─────────────────────────────────────────────────────────
+# 요약 2 — Gemini 무료 등급
+# ─────────────────────────────────────────────────────────
+PROMPT = """다음은 한국 주식 '{name}' 관련 기사입니다.
+
+제목: {title}
+
+본문:
+{body}
+
+무슨 일이 있었는지 핵심만 한국어 1~2문장으로 정리하세요.
+
+규칙:
+- 금액, 비율, 기간 등 숫자는 기사에 나온 그대로 포함할 것
+- 기사에 없는 내용은 절대 만들지 말 것
+- 호재/악재 판단, 매수·매도 의견, 주가 전망은 쓰지 말 것
+- 본문이 기사 내용이 아니거나 판단할 수 없으면 "요약 불가" 다섯 글자만 답할 것
+- 다른 설명 없이 요약문만 출력할 것"""
+
+
+def gemini_summary(name, title, body, retry=True):
+    """Gemini API 로 한 줄 요약. 실패하면 None."""
+    if not GEMINI_KEY or not body:
+        return None
+
+    payload = json.dumps({
+        "contents": [{
+            "parts": [{"text": PROMPT.format(name=name, title=title, body=body)}]
+        }],
+        "generationConfig": {"maxOutputTokens": 300, "temperature": 0.2},
+    }).encode("utf-8")
+
+    url = ("https://generativelanguage.googleapis.com/v1beta/models/"
+           f"{GEMINI_MODEL}:generateContent")
+    req = urllib.request.Request(
+        url, data=payload,
+        headers={
+            "Content-Type": "application/json",
+            "x-goog-api-key": GEMINI_KEY,
+            "User-Agent": UA,
+        },
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "ignore")[:200]
+        if e.code == 429 and retry:      # 분당 한도 초과 → 잠깐 쉬고 한 번만 재시도
+            print("  [요약] 한도 초과 — 20초 대기 후 재시도")
+            time.sleep(20)
+            return gemini_summary(name, title, body, retry=False)
+        print(f"  [요약 오류] {e.code} {detail}")
+        return None
+    except Exception as e:
+        print(f"  [요약 오류] {str(e)[:120]}")
+        return None
+
+    try:
+        parts = data["candidates"][0]["content"]["parts"]
+        text = " ".join(p.get("text", "") for p in parts).strip()
+    except (KeyError, IndexError):
+        return None
+
+    if not text or "요약 불가" in text:
+        return None
+    return text
+
+
+def make_summary(name, title, link):
+    """설정된 방식으로 요약을 만듭니다. (요약문, 사용방식) 반환."""
+    if MODE == "off":
+        return None, None
+
+    body = fetch_article_text(link)
+    if not body:
+        return None, None
+
+    if MODE == "gemini":
+        s = gemini_summary(name, title, body)
+        if s:
+            time.sleep(GEMINI_DELAY)
+            return s, "ai"
+        # AI 가 실패하면 발췌로 대체
+        return lead_summary(body), "발췌"
+
+    return lead_summary(body), "발췌"
 
 
 # ─────────────────────────────────────────────────────────
@@ -240,7 +422,7 @@ def format_disclosure(item):
 # 구글뉴스 RSS
 # ─────────────────────────────────────────────────────────
 def fetch_news(stock):
-    """(기사목록, RSS원본건수, 제목불일치건수) 를 돌려줍니다."""
+    """(기사목록, RSS원본건수, 제목불일치건수)"""
     name = stock["name"]
     keyword = f'"{name}"'
     if NEWS_PERIOD:
@@ -262,8 +444,7 @@ def fetch_news(stock):
         return [], 0, 0
 
     articles = []
-    total = 0
-    skipped = 0
+    total = skipped = 0
     for item in root.iter("item"):
         title = unescape((item.findtext("title") or "").strip())
         link = (item.findtext("link") or "").strip()
@@ -272,7 +453,6 @@ def fetch_news(stock):
         if not title or not link:
             continue
         total += 1
-        # 구글뉴스 제목은 "기사제목 - 언론사" 형태 → 언론사 부분 분리
         if source and title.endswith(f" - {source}"):
             title = title[: -(len(source) + 3)]
         if TITLE_ONLY and not title_matches(stock, title):
@@ -281,17 +461,18 @@ def fetch_news(stock):
         articles.append({"title": title, "link": link,
                          "source": source, "pub": pub})
 
-    articles.reverse()   # RSS는 최신순 → 오래된 것부터 발송
+    articles.reverse()
     return articles, total, skipped
 
 
-def format_news(name, art):
+def format_news(name, art, summary=None, kind=None):
     src = f" · {esc(art['source'])}" if art["source"] else ""
-    return (
-        f"📰 <b>[뉴스] {esc(name)}</b>{src}\n"
-        f"{esc(art['title'])}\n"
-        f"<a href=\"{art['link']}\">기사 보기</a>"
-    )
+    msg = f"📰 <b>[뉴스] {esc(name)}</b>{src}\n{esc(art['title'])}"
+    if summary:
+        tag = "💬" if kind == "ai" else "📌"
+        msg += f"\n\n{tag} {esc(summary)}"
+    msg += f"\n\n<a href=\"{art['link']}\">기사 보기</a>"
+    return msg
 
 
 # ─────────────────────────────────────────────────────────
@@ -308,17 +489,20 @@ def main():
 
     if first_run:
         print("[안내] 첫 실행입니다. 기존 항목은 '읽음' 처리하고 알림은 보내지 않습니다.")
+    if SUMMARY_MODE == "gemini" and not GEMINI_KEY:
+        print("[안내] GEMINI_API_KEY 가 없어 발췌 방식으로 요약합니다.")
+    print(f"[설정] 요약 방식: {MODE}")
 
     corp_codes = resolve_corp_codes(state) if DISCLOSURE_ENABLED and DART_KEY else {}
     if DISCLOSURE_ENABLED and not DART_KEY:
         print("[안내] DART_API_KEY 가 없어 공시 알림을 건너뜁니다.")
 
     messages = []
-    report = []          # 진단용 종목별 집계
+    report = []
+    n_summarized = 0
 
     for stock in WATCHLIST:
         name, code = stock["name"], stock["code"]
-        # 새로 추가된 종목은 첫 회차에 조용히 기록만 (과거 기사 폭탄 방지)
         is_new = (f"news:{code}" not in state["seen"]
                   and f"dart:{code}" not in state["seen"])
         quiet = first_run or is_new
@@ -336,9 +520,17 @@ def main():
             articles, total, skipped = fetch_news(stock)
             for art in articles:
                 key = art["link"][:200]
-                if mark_seen(state, f"news:{code}", key) and not quiet:
-                    messages.append(format_news(name, art))
-                    n_news += 1
+                if not mark_seen(state, f"news:{code}", key) or quiet:
+                    continue
+
+                summary = kind = None
+                if MODE != "off" and n_summarized < MAX_SUMMARIES:
+                    summary, kind = make_summary(name, art["title"], art["link"])
+                    if summary:
+                        n_summarized += 1
+
+                messages.append(format_news(name, art, summary, kind))
+                n_news += 1
 
         print(f"[{name}] RSS {total}건 / 제목불일치 {skipped}건 제외 "
               f"→ 신규 뉴스 {n_news}건, 신규 공시 {n_dart}건"
@@ -355,7 +547,7 @@ def main():
         save_state(state)
         return
 
-    print(f"[결과] 신규 항목 {len(messages)}건")
+    print(f"[결과] 신규 항목 {len(messages)}건 (요약 {n_summarized}건)")
 
     for i, msg in enumerate(messages):
         if not send_telegram(msg):
@@ -363,14 +555,14 @@ def main():
         if i < len(messages) - 1:
             time.sleep(1)
 
-    # 수동 실행일 때만 진단 요약 발송
     if IS_MANUAL:
         send_telegram(
             f"🔧 <b>진단 ({now})</b>\n"
-            f"발송한 신규 항목: {len(messages)}건\n\n"
+            f"발송한 신규 항목: {len(messages)}건 · 요약 {n_summarized}건\n\n"
             + esc("\n".join(report))
             + f"\n\n설정: 기간 {NEWS_PERIOD or '제한없음'} · "
-              f"제목필터 {'켜짐' if TITLE_ONLY else '꺼짐'}"
+              f"제목필터 {'켜짐' if TITLE_ONLY else '꺼짐'} · "
+              f"요약 {MODE}"
         )
 
     save_state(state)
