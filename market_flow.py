@@ -97,11 +97,23 @@ def fetch_market(url, bas_dd, api_key):
                 r = requests.get(url, headers=headers, params=params, timeout=30)
             else:
                 r = requests.post(url, headers=headers, json=params, timeout=30)
+
+            # 진단용: 무슨 일이 있어도 응답 상태와 앞부분을 남긴다
+            log(f"  {method} status={r.status_code} len={len(r.text)}")
             if r.status_code != 200:
-                log(f"  {method} {r.status_code}: {r.text[:200]}")
+                log(f"  응답: {r.text[:300]}")
                 continue
-            data = r.json()
+
+            try:
+                data = r.json()
+            except Exception:
+                log(f"  JSON 아님: {r.text[:300]}")
+                continue
+
             rows = data.get("OutBlock_1") or data.get("OutBlock1") or []
+            if not rows:
+                # 200인데 비었다 → 대개 이용신청 미승인 or 해당일 데이터 없음
+                log(f"  본문(앞부분): {str(data)[:300]}")
             return rows
         except Exception as e:
             log(f"  {method} 예외: {e}")
