@@ -41,13 +41,20 @@ REPORT_N     = 60     # 일간 분석에 쓸 상위 종목 수
 WEEK_N       = 40     # 주간 집계에 쓸 상위 종목 수 (더 좁게 봐야 신호가 산다)
 WEEK_MIN_DAY = 3      # 그 주에 최소 며칠 이상 상위권에 머물러야 '들어온 것'으로 인정
 HIGH_WINDOW  = 252    # 52주(약 252영업일) 신고가
-MIN_CAP_EOK  = 3000   # 회전율 랭킹에서 볼 최소 시가총액(억) — 초소형주 소음 제거
+MIN_CAP_EOK  = 10000  # 회전율 랭킹 최소 시가총액(억) = 1조. 낮추면 소음이 늘어난다
+MIN_TURNOVER = 2.0    # 회전율 하한(%) — 이보다 낮으면 "격렬한 손바뀜"이 아니다
 
 FLOW_DIR  = "data/flow"
 CLOSE_DIR = "data/close"
 
-ETF_KEYWORDS = ("KODEX", "TIGER", "RISE", "SOL", "ACE", "PLUS", "HANARO",
-                "KOSEF", "ARIRANG", "KBSTAR", "SOL ", "TIMEFOLIO", "WOORI")
+# ETF·ETN·스팩·리츠·채권형 제외용 키워드.
+# 주의: 너무 넓게 잡으면 진짜 기업까지 걸러진다.
+#   ("파워"→파워로직스, "BNK"→BNK금융지주 처럼 실제 종목명과 겹치는 단어 금지)
+ETF_KEYWORDS = ("KODEX", "TIGER", "RISE", "SOL ", "ACE ", "PLUS ", "HANARO",
+                "KOSEF", "ARIRANG", "KBSTAR", "TIMEFOLIO", "1Q ", "TREX",
+                "히어로즈", "마이다스", "금리액티브", "머니마켓", "회사채",
+                "국고채", "단기채", "통안채", "은행채", "스팩", "리츠",
+                "맥쿼리인프라", "커버드콜", "레버리지", "인버스")
 
 
 # ─────────────────────────────────────────────
@@ -200,7 +207,8 @@ def analyze_daily(top):
     lev = sum(r["amount_eok"] for r in etfs if "레버리지" in r["name"] and "인버스" not in r["name"])
     inv = sum(r["amount_eok"] for r in etfs if "인버스" in r["name"])
 
-    turn = [r for r in stocks if r["cap_eok"] >= MIN_CAP_EOK and r.get("turnover_pct", 0) > 0]
+    turn = [r for r in stocks if r["cap_eok"] >= MIN_CAP_EOK
+            and r.get("turnover_pct", 0) >= MIN_TURNOVER]
     turn.sort(key=lambda r: -r["turnover_pct"])
 
     return {
@@ -242,6 +250,8 @@ def new_highs(bas_dd):
     with open(files[-1], encoding="utf-8-sig") as fh:
         for row in csv.DictReader(fh):
             c, v = row["code"], to_num(row["close"])
+            if is_etf(row["name"]):     # ETF·스팩·채권형은 매일 신고가라 정보가 없다
+                continue
             if c in hist and v > hist[c] > 0:
                 highs.append(row["name"])
     return highs, len(files)
@@ -363,10 +373,13 @@ def build_message(bas_dd, a, highs, ndays):
         L.append("")
 
     if a["turnover_top"]:
-        cap_txt = f"{MIN_CAP_EOK/10000:.1f}조" if MIN_CAP_EOK >= 10000 else f"{MIN_CAP_EOK:,}억"
-        L.append(f"회전율 상위 (시총 {cap_txt} 이상)")
+        cap_txt = f"{MIN_CAP_EOK/10000:.0f}조" if MIN_CAP_EOK >= 10000 else f"{MIN_CAP_EOK:,}억"
+        L.append(f"회전율 상위 (시총 {cap_txt}↑ · 회전율 {MIN_TURNOVER:.0f}%↑)")
         for r in a["turnover_top"]:
             L.append(f"· {r['name']} {r['turnover_pct']:.2f}% ({r['chg']:+.2f}%)")
+        L.append("")
+    else:
+        L.append(f"회전율: 기준({MIN_TURNOVER:.0f}%) 넘는 대형주 없음 — 조용한 장")
         L.append("")
 
     if highs is None:
