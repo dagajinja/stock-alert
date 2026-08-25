@@ -40,7 +40,7 @@ TOP_N        = 200    # 저장할 상위 종목 수
 REPORT_N     = 60     # 일간 분석에 쓸 상위 종목 수
 WEEK_N       = 40     # 주간 집계에 쓸 상위 종목 수 (더 좁게 봐야 신호가 산다)
 WEEK_MIN_DAY = 3      # 그 주에 최소 며칠 이상 상위권에 머물러야 '들어온 것'으로 인정
-HIGH_WINDOW  = 60     # N일 신고가 (데이터가 쌓이면 자동 계산)
+HIGH_WINDOW  = 252    # 52주(약 252영업일) 신고가
 MIN_CAP_EOK  = 3000   # 회전율 랭킹에서 볼 최소 시가총액(억) — 초소형주 소음 제거
 
 FLOW_DIR  = "data/flow"
@@ -193,6 +193,10 @@ def analyze_daily(top):
     r_tot = sum(r["amount_eok"] for r in rest) or 1
     r_up = sum(r["amount_eok"] for r in rest if r["chg"] > 0)
 
+    # 상위 N종목 누적 집중도 — 쏠림의 '모양'을 본다
+    srt = sorted(d, key=lambda r: -r["amount_eok"])
+    conc = {n: sum(r["amount_eok"] for r in srt[:n]) / tot * 100 for n in (5, 10, 30)}
+
     lev = sum(r["amount_eok"] for r in etfs if "레버리지" in r["name"] and "인버스" not in r["name"])
     inv = sum(r["amount_eok"] for r in etfs if "인버스" in r["name"])
 
@@ -205,12 +209,13 @@ def analyze_daily(top):
         "etf_ratio": sum(r["amount_eok"] for r in etfs) / tot * 100,
         "big3": big3,
         "big3_ratio": big3_amt / tot * 100,
+        "conc": conc,
         "up_ratio": up_amt / s_tot * 100,
         "rest_up_ratio": r_up / r_tot * 100,
         "lev": lev,
         "inv": inv,
         "inv_share": inv / (lev + inv) * 100 if (lev + inv) > 0 else 0,
-        "turnover_top": turn[:6],
+        "turnover_top": turn[:10],
     }
 
 
@@ -339,6 +344,8 @@ def build_message(bas_dd, a, highs, ndays):
     L.append(f"· 개별 {a['stock_ratio']:.0f}% / ETF·파생 {a['etf_ratio']:.0f}%")
     b3 = " · ".join(r["name"] for r in a["big3"])
     L.append(f"· 상위3 집중도 {a['big3_ratio']:.1f}%  ({b3})")
+    c = a["conc"]
+    L.append(f"· 누적 집중도  상위5 {c[5]:.0f}% / 상위10 {c[10]:.0f}% / 상위30 {c[30]:.0f}%")
     L.append("")
 
     L.append(f"자금의 방향 (개별종목 기준)")
@@ -403,7 +410,7 @@ def main():
         sys.exit(1)
 
     now = datetime.now(KST)
-    bas_dd = os.environ.get("BAS_DD") or (now - timedelta(days=1)).strftime("%Y%m%d")
+    bas_dd = os.environ.get("BAS_DD") or now.strftime("%Y%m%d")
     log(f"기준일 {bas_dd}")
 
     rows = collect(bas_dd, api_key)
