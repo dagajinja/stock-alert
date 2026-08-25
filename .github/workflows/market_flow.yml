@@ -2,8 +2,8 @@ name: market-flow
 
 on:
   schedule:
-    # UTC 기준. 10:00 UTC = 한국시간 19:00 (장 마감 후 KRX 집계 완료 시점)
-    - cron: "0 10 * * 1-5"
+    # UTC 기준. 22:00 UTC = 한국시간 다음날 07:00 (전날 확정 데이터 수집)
+    - cron: "0 22 * * 0-4"
   workflow_dispatch:
     inputs:
       bas_dd:
