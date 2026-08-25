@@ -403,7 +403,7 @@ def main():
         sys.exit(1)
 
     now = datetime.now(KST)
-    bas_dd = os.environ.get("BAS_DD") or now.strftime("%Y%m%d")
+    bas_dd = os.environ.get("BAS_DD") or (now - timedelta(days=1)).strftime("%Y%m%d")
     log(f"기준일 {bas_dd}")
 
     rows = collect(bas_dd, api_key)
