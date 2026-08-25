@@ -42,8 +42,12 @@ MIN_CAP_EOK   = 1000   # 시가총액 하한(억)
 MAX_SHOW      = 12     # 텔레그램에 보여줄 개수 (전체는 CSV에)
 OUT_DIR       = "data/screen"
 
-ETF_KEY = ("KODEX", "TIGER", "RISE", "SOL", "ACE", "PLUS", "HANARO",
-           "KOSEF", "ARIRANG", "KBSTAR", "TIMEFOLIO", "WOORI", "스팩")
+# 주의: 너무 넓게 잡으면 진짜 기업까지 걸러진다("파워"→파워로직스 등)
+ETF_KEY = ("KODEX", "TIGER", "RISE", "SOL ", "ACE ", "PLUS ", "HANARO",
+           "KOSEF", "ARIRANG", "KBSTAR", "TIMEFOLIO", "1Q ", "TREX",
+           "히어로즈", "마이다스", "금리액티브", "머니마켓", "회사채",
+           "국고채", "단기채", "통안채", "은행채", "스팩", "리츠",
+           "맥쿼리인프라", "커버드콜", "레버리지", "인버스")
 
 
 # ── 유틸 ────────────────────────────────────────────
