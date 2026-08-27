@@ -3,7 +3,7 @@ name: stock-alert
 
 on:
   schedule:
-    - cron: "*/15 * * * *"    # 15분마다 (GitHub 사정으로 밀릴 수 있음)
+    - cron: "7,37 * * * *"    # 15분마다 (GitHub 사정으로 밀릴 수 있음)
   workflow_dispatch:          # 수동 실행 버튼
 
 permissions:
