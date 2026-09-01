@@ -56,6 +56,21 @@ DISCLOSURE_ENABLED = True    # 공시 알림 켜기/끄기
 NEWS_PERIOD = "3d"           # 뉴스 검색 기간: 1d / 2d / 3d / 7d — 빈칸이면 제한 없음
 TITLE_ONLY = True            # True 면 제목에 종목명이 있는 기사만
 STRICT_POS = 6               # strict 종목: 제목 앞 몇 글자 안에 이름이 있어야 하는지
+
+# 시세·수급 자동생성 기사 차단 (제목에 이 표현이 있으면 모든 종목에서 제외)
+BLOCK_TITLE = [
+    "주가", "장중", "급등", "급락", "강세", "약세", "상승세", "하락세",
+    "상한가", "하한가", "52주", "신고가", "신저가", "거래량",
+    "외국인", "기관", "순매수", "순매도", "매수세", "매도세",
+    "코스닥 순위", "코스피 순위", "시가총액 순위",
+    "특징주", "출렁", "들썩", "요동",
+]
+# 위 단어가 있어도 이 표현이 함께 있으면 통과시킵니다 (진짜 뉴스일 가능성)
+ALLOW_TITLE = [
+    "수주", "계약", "공급", "실적", "영업이익", "매출", "인수", "합병",
+    "증설", "투자", "신제품", "특허", "승인", "허가", "임상", "공시",
+    "유상증자", "무상증자", "자사주", "배당", "전환사채", "출시",
+]
 NEWS_LOOKBACK_DAYS = 3       # 공시 조회 기간(일)
 
 SUMMARY_MODE = "gemini"      # "gemini" / "lead" / "off"
@@ -145,8 +160,13 @@ def title_matches(stock, title):
     """제목에 종목명이 있는지. strict 종목은 앞쪽에 나올 때만 인정."""
     t = norm(title)
 
-    for kw in stock.get("exclude", []):          # 제외 단어가 있으면 탈락
+    for kw in stock.get("exclude", []):          # 종목별 제외 단어
         if norm(kw) in t:
+            return False
+
+    # 시세 로봇기사 차단 (단, 실질 뉴스 단어가 함께 있으면 통과)
+    if any(norm(kw) in t for kw in BLOCK_TITLE):
+        if not any(norm(kw) in t for kw in ALLOW_TITLE):
             return False
 
     names = [stock["name"]] + list(stock.get("alias", []))
@@ -538,6 +558,8 @@ def main():
 
     state = load_state()
     first_run = not state["initialized"]
+
+
     now = datetime.now(KST).strftime("%m/%d %H:%M")
 
     if first_run:
@@ -588,7 +610,9 @@ def main():
         print(f"[{name}] RSS {total}건 / 제목불일치 {skipped}건 제외 "
               f"→ 신규 뉴스 {n_news}건, 신규 공시 {n_dart}건"
               + (" (신규종목 – 조용히 등록)" if quiet else ""))
-        report.append(f"{name}: RSS {total} → 통과 {total - skipped}, 신규 {n_news}")
+        kept = len(state["seen"].get(f"news:{code}", []))
+        report.append(f"{name}: RSS {total} → 통과 {total - skipped}, "
+                      f"신규 {n_news} (기록 {kept})")
 
     if first_run:
         send_telegram(
