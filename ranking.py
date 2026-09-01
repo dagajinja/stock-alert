@@ -10,8 +10,15 @@ ETF·ETN·스팩·리츠를 제외한 '개별 기업'만 골라 세 가지로 �
 텔레그램에는 각 15개, 40위 전체는 data/rank/YYYYMMDD.csv 에 저장.
 """
 
+import io
 import os
 import csv
+import json
+import time
+import zipfile
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 
 import market_flow as M
@@ -23,6 +30,14 @@ SHOW_N    = 15    # 텔레그램에 보여줄 개수
 MIN_AMT   = 50    # 상승률·거래량 순위에 넣을 최소 거래대금(억)
                   # 이걸 안 걸면 거래 없는 초소형주 상한가만 올라온다
 OUT_DIR   = "data/rank"
+
+# ── 공시 붙이기 ──────────────────────────────
+DISC_MIN_CHG  = 10.0   # 이만큼 이상 오른 종목에만 공시를 조회한다
+DISC_MAX_CALL = 12     # DART 호출 상한 (종목당 1회)
+DISC_DAYS     = 2      # 며칠치 공시를 볼지 (당일 + 전일)
+DISC_SHOW     = 2      # 종목당 보여줄 공시 최대 건수
+CORP_URL      = "https://opendart.fss.or.kr/api/corpCode.xml"
+LIST_URL      = "https://opendart.fss.or.kr/api/list.json"
 
 
 def fmt_amt(eok):
@@ -39,6 +54,107 @@ def fmt_vol(sh):
     if sh >= 1e4:
         return f"{sh/1e4:,.0f}만주"
     return f"{sh:,.0f}주"
+
+
+# ─────────────────────────────────────────────
+# DART 공시 조회
+#   stock_alert.py 와 같은 방식으로 부른다(엔드포인트·파라미터 동일).
+#   DART는 종목코드가 아니라 '고유번호(corp_code)'를 쓰므로 변환이 필요하다.
+# ─────────────────────────────────────────────
+def http_get(url, timeout=30):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def load_corp_codes(dart_key, wanted):
+    """종목코드 -> DART 고유번호. wanted 에 있는 것만 뽑는다."""
+    if not wanted:
+        return {}
+    try:
+        url = f"{CORP_URL}?crtfc_key={dart_key}"
+        raw = http_get(url, timeout=60)
+        zf = zipfile.ZipFile(io.BytesIO(raw))
+        xml = zf.read(zf.namelist()[0])
+    except Exception as e:
+        M.log(f"  DART 고유번호 목록 실패: {e}")
+        return {}
+
+    cache = {}
+    need = set(wanted)
+    try:
+        root = ET.fromstring(xml)
+        for item in root.iter("list"):
+            code = (item.findtext("stock_code") or "").strip()
+            if code and code in need:
+                cache[code] = (item.findtext("corp_code") or "").strip()
+                need.discard(code)
+                if not need:
+                    break
+    except Exception as e:
+        M.log(f"  고유번호 파싱 실패: {e}")
+    if need:
+        M.log(f"  고유번호 못 찾음: {sorted(need)}")
+    return cache
+
+
+def fetch_disclosures(dart_key, corp_code, bas_dd):
+    """해당 종목의 최근 공시 목록"""
+    end = datetime.strptime(bas_dd, "%Y%m%d")
+    bgn = end - timedelta(days=DISC_DAYS)
+    params = urllib.parse.urlencode({
+        "crtfc_key": dart_key,
+        "corp_code": corp_code,
+        "bgn_de": bgn.strftime("%Y%m%d"),
+        "end_de": end.strftime("%Y%m%d"),
+        "page_count": 100,
+    })
+    try:
+        data = json.loads(http_get(f"{LIST_URL}?{params}").decode("utf-8"))
+    except Exception as e:
+        M.log(f"  공시 조회 실패({corp_code}): {e}")
+        return []
+
+    status = data.get("status")
+    if status == "013":          # 조회 결과 없음
+        return []
+    if status != "000":
+        M.log(f"  DART status={status} {data.get('message')}")
+        return []
+
+    items = data.get("list", [])
+    items.sort(key=lambda x: x.get("rcept_no", ""), reverse=True)
+    return items
+
+
+def attach_disclosures(by_chg, bas_dd):
+    """상승률 상위 중 급등 종목에만 공시를 붙인다."""
+    dart_key = os.environ.get("DART_API_KEY", "")
+    if not dart_key:
+        M.log("DART_API_KEY 없음 - 공시 생략")
+        return {}
+
+    targets = [r for r in by_chg[:SHOW_N] if r["chg"] >= DISC_MIN_CHG][:DISC_MAX_CALL]
+    if not targets:
+        M.log(f"공시 대상 없음 (+{DISC_MIN_CHG:.0f}% 이상 없음)")
+        return {}
+
+    M.log(f"공시 조회 대상 {len(targets)}종목")
+    cache = load_corp_codes(dart_key, [r["code"] for r in targets])
+
+    out = {}
+    for r in targets:
+        cc = cache.get(r["code"])
+        if not cc:
+            continue
+        items = fetch_disclosures(dart_key, cc, bas_dd)
+        if items:
+            out[r["code"]] = [
+                (it.get("report_nm", "").strip(), it.get("rcept_dt", ""))
+                for it in items[:DISC_SHOW]
+            ]
+        time.sleep(0.3)
+    return out
 
 
 def main():
@@ -66,17 +182,20 @@ def main():
     by_chg  = sorted(liquid, key=lambda r: -r["chg"])[:TOP_N]
     by_vol  = sorted(liquid, key=lambda r: -r.get("volume", 0))[:TOP_N]
 
+    disc = attach_disclosures(by_chg, bas_dd)
+
     # ── CSV 저장 (40위 전체) ──
     os.makedirs(OUT_DIR, exist_ok=True)
     with open(f"{OUT_DIR}/{bas_dd}.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(["구분", "순위", "code", "name", "close", "chg_pct",
-                    "amount_eok", "volume", "cap_eok"])
+                    "amount_eok", "volume", "cap_eok", "공시"])
         for label, lst in (("거래대금", by_amt), ("상승률", by_chg), ("거래량", by_vol)):
             for i, r in enumerate(lst, 1):
+                d = " | ".join(nm for nm, _ in disc.get(r["code"], []))
                 w.writerow([label, i, r["code"], r["name"], round(r["close"], 1),
                             round(r["chg"], 2), round(r["amount_eok"], 1),
-                            int(r.get("volume", 0)), round(r["cap_eok"], 1)])
+                            int(r.get("volume", 0)), round(r["cap_eok"], 1), d])
 
     # ── 텔레그램 메시지 ──
     dt = datetime.strptime(bas_dd, "%Y%m%d")
@@ -91,6 +210,12 @@ def main():
     L.append(f"■ 상승률 상위 {SHOW_N}  (거래대금 {MIN_AMT}억↑)")
     for i, r in enumerate(by_chg[:SHOW_N], 1):
         L.append(f"{i:2d}. {r['name']} {r['chg']:+.1f}% ({fmt_amt(r['amount_eok'])})")
+        for nm, dt in disc.get(r["code"], []):
+            L.append(f"    └ 공시: {nm}")
+        if r["chg"] >= DISC_MIN_CHG and r["code"] not in disc:
+            L.append(f"    └ 당일 공시 없음")
+    L.append("")
+    L.append(f"  ※ 공시는 +{DISC_MIN_CHG:.0f}% 이상 종목만 조회. 공시가 상승 원인이라는 뜻은 아님")
     L.append("")
 
     L.append(f"■ 거래량 상위 {SHOW_N}  (거래대금 {MIN_AMT}억↑)")
