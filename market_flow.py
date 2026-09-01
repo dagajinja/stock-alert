@@ -144,6 +144,7 @@ def collect(bas_dd, api_key):
             cap  = to_num(pick(r, "MKTCAP", "MKT_CAP"))
             close = to_num(pick(r, "TDD_CLSPRC", "CLSPRC", "TDD_CLS_PRC"))
             chg  = to_num(pick(r, "FLUC_RT", "CMPPREVDD_RT"))
+            vol  = to_num(pick(r, "ACC_TRDVOL", "TRDVOL", "ACC_TRD_VOL"))
             if not name or amt <= 0:
                 continue
             out.append({
@@ -154,6 +155,7 @@ def collect(bas_dd, api_key):
                 "chg": chg,
                 "amount_eok": amt / 1e8,      # 원 → 억원
                 "cap_eok": cap / 1e8,
+                "volume": vol,                # 거래량(주)
             })
     return out
 
