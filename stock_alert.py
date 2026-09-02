@@ -15,6 +15,7 @@ gemini 로 두고 키가 없으면 자동으로 lead 방식으로 넘어갑니�
   GEMINI_API_KEY                                      (gemini 방식일 때만)
 """
 
+import difflib
 import io
 import json
 import os
@@ -79,6 +80,10 @@ GEMINI_DELAY = 5             # 무료 등급 분당 한도(15회) 회피용 대�
 MAX_SUMMARIES = 20           # 한 번 실행에서 요약할 최대 건수
 ARTICLE_CHARS = 2500         # 기사 본문에서 읽어들일 글자 수
 LEAD_SENTENCES = 2           # lead 방식일 때 뽑을 문장 수
+
+DEDUP_TITLE = True           # 제목이 비슷한 기사는 하나만 (매체별 재배포 차단)
+DUP_RATIO = 0.68             # 제목 유사도 기준 (높일수록 덜 걸러냄)
+MAX_TITLES = 60              # 종목별 제목 기록 보관 개수
 
 STATE_FILE = "state.json"
 MAX_SEEN = 400
@@ -154,6 +159,33 @@ def norm(text):
 
 
 BRACKET_RE = re.compile(r"^\s*(\[[^\]]*\]|【[^】]*】|<[^>]*>)+")
+
+
+HEAD_RE = re.compile(r"\[[^\]]*\]|【[^】]*】|<[^>]*>")
+KEEP_RE = re.compile(r"[^0-9A-Za-z가-힣]")
+
+
+def title_fingerprint(title):
+    """비교용 제목 지문 — 머리표와 기호를 떼어냅니다."""
+    t = HEAD_RE.sub("", title)
+    return KEEP_RE.sub("", t).lower()
+
+
+def is_duplicate_title(state, code, title):
+    """최근 보낸 기사와 제목이 비슷하면 True (같은 내용의 재배포로 봄)."""
+    fp = title_fingerprint(title)
+    if len(fp) < 8:
+        return False
+
+    bucket = state["seen"].setdefault(f"title:{code}", [])
+    for old in bucket:
+        if difflib.SequenceMatcher(None, fp, old).ratio() >= DUP_RATIO:
+            return True
+
+    bucket.append(fp)
+    if len(bucket) > MAX_TITLES:
+        del bucket[:-MAX_TITLES]
+    return False
 
 
 def title_matches(stock, title):
@@ -590,12 +622,17 @@ def main():
                     messages.append(format_disclosure(item))
                     n_dart += 1
 
-        total = skipped = n_news = 0
+        total = skipped = n_news = n_dup = 0
         if NEWS_ENABLED:
             articles, total, skipped = fetch_news(stock)
             for art in articles:
                 key = art["link"][:200]
                 if not mark_seen(state, f"news:{code}", key) or quiet:
+                    continue
+
+                # 같은 내용이 여러 매체로 올라온 경우 하나만
+                if DEDUP_TITLE and is_duplicate_title(state, code, art["title"]):
+                    n_dup += 1
                     continue
 
                 summary = kind = None
@@ -608,11 +645,11 @@ def main():
                 n_news += 1
 
         print(f"[{name}] RSS {total}건 / 제목불일치 {skipped}건 제외 "
+              f"/ 중복 {n_dup}건 제외 "
               f"→ 신규 뉴스 {n_news}건, 신규 공시 {n_dart}건"
               + (" (신규종목 – 조용히 등록)" if quiet else ""))
-        kept = len(state["seen"].get(f"news:{code}", []))
         report.append(f"{name}: RSS {total} → 통과 {total - skipped}, "
-                      f"신규 {n_news} (기록 {kept})")
+                      f"중복 -{n_dup}, 신규 {n_news}")
 
     if first_run:
         send_telegram(
