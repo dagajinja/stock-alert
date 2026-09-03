@@ -251,7 +251,6 @@
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE1aS2xNUmNob2x1bHRoWEQ4MFQ4bmtkZDJ1V083c1ppMmp6Ri13S0FXSHZIWTVsMFZzSFRVeTE3eGRKcXU4X3Z1bUxVWHNDenFCbVBPNEU4VUZyc1FDS0tkajA5czNKYXpWeUtZMjNVejUyZTA?oc="
   ],
   "news:375500": [
-   "https://news.google.com/rss/articles/CBMieEFVX3lxTE9mVER0Y1pfeW9HWnRGYjc4anJqUUVDM0FrU0Zqdjh4LUJucDFOaGtMd2R6TlQxc1FPWGVpWDJGSjdqX2E0bUlZeEdhUW5HRkVtNmIxVDR1bEFEQTdIRENPQk5iYXVJTWZXWGd3dmEtNFpXREcwaHd",
    "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB0X0l0V1B6c2phUHljS1R4R2d1QjlsSU1hY3lyN1ZzQW9ZV3pRcVZ1QXl0alJ0eTBZeEhlbmJnRTFVMEVyM2ZmeHlqaFBZR2p4d1ZvSDRUZ3FSUQ?oc=5",
    "https://news.google.com/rss/articles/CBMizgFBVV95cUxOd0VicmJXMHdsY2x1Ynp1UUhrbS04aHl0WWFaalk2U3hPenZidVF4WFZpMENjTnNhandTc2h1ajM3NHgzZGJFeE01VjRfaGlSQVpEdFFHUW1WZ3h3NVVOOWJWQTFFdmhldWllVXZQWGl3SlZfa3d",
    "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5NRU9jNERVODVpcVpnLUFDRU1aTmVySXktWmtVYzFzRV92Y2FiSXBoMmxvYU5NYWt0TXQ4M1BnZWE2dngzV19lTnZlRWJVUC0zamt6cEZ2TlNCcVdQdGc?oc=5",
@@ -650,7 +649,8 @@
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE5CYUtVbERBVDRqMjBHdktjZ0dweGctamtaUE5YZkdEVkJYZldwU0duTjZtTVQxazdITWJCXzkxQkNsZ2pCZXBCRDNSQ0VOWEdfc0xRMUdCSlVHNUdFaWxCUHB1M1h0a0VwYjJJNVBEeDA4UXPSAXd",
    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBreG9wcGVhdDFvYTJweHhnN0pFVVpzMU1JNVdHYm9PYXRQSmVJai1HcFZObDB3c1c3Y0pfQks5TGx0bWxydHZ4T2g1RHpmamdVLVNpeWMxajI5OS1tNzg0SVZUOV9GeHfSAWtBVV95cUxNQ1A4OU5",
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5YdjVXbExfd2t1NnFFcmhZYUdsUnQ2aUJpNVlldlV6aFlFSF9odjg2eUxsamlmUVhHZkNHNHo4YXFDUWpXZk9DdklIY0gzWEc5OVR2MHRUZTFzN1Y3NGJxUWJyeFBlVzRZ0gFsQVVfeXFMUEp4N3Y",
-   "https://news.google.com/rss/articles/CBMic0FVX3lxTE5DZ01aQ0FXX0RRSm1YbkotR0ZpRkozS1UwS1hTaFpmR0lneWVUTDBYcFc3ZlhvcHkxQWY3T0JuV21YXzgzNGZIUlJXRlRoY21aQTVmTGFNSUY2dF9qd1hMUTZ5a0QyN3NrLUhNeUVGSEU2dEk?oc="
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTE5DZ01aQ0FXX0RRSm1YbkotR0ZpRkozS1UwS1hTaFpmR0lneWVUTDBYcFc3ZlhvcHkxQWY3T0JuV21YXzgzNGZIUlJXRlRoY21aQTVmTGFNSUY2dF9qd1hMUTZ5a0QyN3NrLUhNeUVGSEU2dEk?oc=",
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTE94UGhGaDItVk5YaklUSkVscjFCTjVFWVhmeHJoQ3BUMUZMWDhfVVhMclVoX1BKWXZQdUlhaFlaZTY0SHFfSE82R1c5dXNJZUl5M3N0Z0V1VmowUUVVMXhFMzBNV0RYcVN5X0h2RDFobWhTMFE?oc="
   ],
   "dart:222800": [
    "20260805900457",
@@ -2899,7 +2899,8 @@
   ],
   "title:375500": [
    "dl이앤씨국민연금실력행사가능성은",
-   "dl이앤씨최대주주일가지분소폭감소이준용친인척보통주전량매도"
+   "dl이앤씨최대주주일가지분소폭감소이준용친인척보통주전량매도",
+   "dl이앤씨최대주주dl측주식등보유비율003p감소"
   ],
   "title:095340": [
    "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝",
