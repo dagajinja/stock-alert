@@ -662,7 +662,6 @@
    "20260901000189"
   ],
   "news:222800": [
-   "https://news.google.com/rss/articles/CBMiZkFVX3lxTE90eXNzZTZYWmlfeEswM3BXMTduUXRvSUNqZ2RQeGtyY2pNaG9pdG5UTjVtZlh3d1RQeGJ0STJxVHRaX2xTeTVPbGZuZUFGOG8tNGFXVTZhOEk5Rm5QdE1Hb3BzQ2Z0Zw?oc=5",
    "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1XWENlbklIZ2F0RjJsWkVXcXpRRWxjYjR1TWREbTZJSkhOeURqU1NWVGtuV1pkamtMYVNIdTFIYzJWcTl2VU5qUFZzdFNYSUFmVTlIWm5uajVjM25mNDNXblk2eUk3dw?oc=5",
    "https://news.google.com/rss/articles/CBMia0FVX3lxTE9ieDJUaEN0bm82dGVlRThMNmJ4cUlPOWZwVFp4M0JkUm4zbzlQYTRuVGYzLUc4d3RCNDhsQ3g5VlVCVko5V3FzRFJWUlhlMFJXY1lsLXFkbm9YdGoxRkMwTmtIVW5fZ01zM0NF0gFvQVVfeXFMTzB",
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5LMHVKSjF0a0VaMWJ6XzNLbFIxRmwtYmxUX2lYazZYRHdNM0VUU0x3WmpMcnl1V1I3Nm90SFQtb1JScUVMcDBtY2xpQUNiY2Z4bDQ2bVJSVlhaVXh3UkhUXzh0R0g1UFg30gFuQVVfeXFMTU83bll",
@@ -1061,7 +1060,8 @@
    "https://news.google.com/rss/articles/CBMicEFVX3lxTE9sNzB3WUlUM05qRWpkYV9XWVE2enQ1Q2RxVFcxbkZqMjNhT0w4VGZMLVNBdW5YZWNfbDN0MjlKOGpTZHU2cFM4X3Z3ZElyYlo0bFo5a1VwWjBEVGVsMktIcmYtYWhDcjVyNTZtajZIVUo?oc=5",
    "https://news.google.com/rss/articles/CBMibEFVX3lxTE9KNGdmbGJrYm9ocFUyd3MyYnJjUzIzaGpaTVhuMld2MWc4cWNfbjh0MWd5aDFmRklJS3lTeXhOdDNmeS1PZlFpYU1SbFRDUS00VVoxSnY3UklaT2JKTFlObUxQdUV5MnJ3NHd0N9IBbEFVX3lxTE9",
    "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Qd2JpOFhrODI3cmVSTVlrUTNyWmxPMDZ4NU1XelFiSkVld2tiQ1ZKeVJSRzFWeTl3WGd0MHE5cXk3dkNVbnVNR3ZaSVZvbUg0MnAwZ0FjWHBQTnJ0OWV2SmZpWXlaT3A4QlBOcg?oc=5",
-   "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5LMWpLaWZJOHZ6ZTN4MWcybW8wYXFpZHFuN21QWE1sVVJnZXBMQmsxSDJ3bzRJcGNmdEpLN1dTUGZGZTdSaWEzRjZBVWtlSmUzMzJEdU9WNHBtT0Yt?oc=5"
+   "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5LMWpLaWZJOHZ6ZTN4MWcybW8wYXFpZHFuN21QWE1sVVJnZXBMQmsxSDJ3bzRJcGNmdEpLN1dTUGZGZTdSaWEzRjZBVWtlSmUzMzJEdU9WNHBtT0Yt?oc=5",
+   "https://news.google.com/rss/articles/CBMicEFVX3lxTE9qUU9jaXBLSVMwcFVqMVhUZjNRbjg0S0VRclJJTGVxa2hBVGtoWG8tZ3FBOFBrS1RRdWtELXBuZlZoeEFjTXFieGo3ZG1NS0hRYVJCZkFtWG84N0haWWtUM0t2NUJDakJIdjR1V0daZ3k?oc=5"
   ],
   "news:458870": [
    "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1uWjY0eXhrR2MtcVFqYnNQd3JFbTFxOHRtNVg2d1VzQkQ2dENhR3VDbVNlTHEyNGgybklxNzBWbGlRRHVCTTl4ek9aOEFQUQ?oc=5",
@@ -2222,7 +2222,8 @@
    "https://news.google.com/rss/articles/CBMib0FVX3lxTE1pTEVGdTBFOW1MTUI1dUp5QjBvSGMza3lNdm1QQmp5ZkNLTmJDLXdRMkd2VW96T0FpMldsUXpjRl9GUHExTktjUDM2ZzhsdFZsZXY1d3d6VHVldmROd3FNNThkckRlUWdLR1VpUGdxONIBc0FVX3l",
    "https://news.google.com/rss/articles/CBMibkFVX3lxTFBqeUU3LVhYeFNSRTVxQWZzMHNscWdlVzEyY2VqTElFRkdqdnE0V2t1Zm5FLTVZWDg0MlBaZzlVY3pNSTdwdmdnUjVDS2t1aGYyREY0QTVlMndtRnBUczg3enlzd3B6MmE1ZEdUam530gFuQVVfeXF",
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTE84Q1dpSFVoWTJEOEZibVVuT1dmQ25pV1lYUUdjcjVwZ2xYdHZGZlNwWjhCNnI5enlEX29qRS1CcmNZZjcya1laT2NuN0hsd1BVdGMyQzN1SUExZEVMZzQ0R28yV3o2UDBt0gFuQVVfeXFMUGp5RTc",
-   "https://news.google.com/rss/articles/CBMic0FVX3lxTE5oOUVGeEhubjdCWF9DSEhoWDRRU0YtbkF2ZVo4aWQyYXBOSG9fNHNBcFZrVVFoZG1JNkUyWkRsV0cwYTZHRC13MjZkck5pblR2b21iTG4zMmlhNFd3Qm4ydi12SmdOZ0twcjFWU2U2d1lENXPSAXN"
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTE5oOUVGeEhubjdCWF9DSEhoWDRRU0YtbkF2ZVo4aWQyYXBOSG9fNHNBcFZrVVFoZG1JNkUyWkRsV0cwYTZHRC13MjZkck5pblR2b21iTG4zMmlhNFd3Qm4ydi12SmdOZ0twcjFWU2U2d1lENXPSAXN",
+   "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBZMktaQWF4eUZxOXdjc3MxTlFSclBoU3hGQWdRS0prdEpkWERmQjl3eWxKNElfYy1XNVJEMkZqWERLWWl4Wm1WQldzNWsxY3BweGJJN0h2M0V4SGFT?oc=5"
   ],
   "news:039440": [
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNX2tubmZma1VjYVc2LW5BcTd6dVFFQ1gzUFR4QzA2VE13a01HWkVWRlVKNGxycURGaWpfM1M1VmFZU3B1bjNWWHhxOGxGNXRqckJUT2xrd0Q3TXVuUXpvdWhsRHN6QnFYWjlv0gFvQVVfeXFMTVQ",
@@ -2838,7 +2839,9 @@
    "20260827800008",
    "20260827800281",
    "20260831001406",
-   "20260901800365"
+   "20260901800365",
+   "20260903000348",
+   "20260903800597"
   ],
   "dart:336570": [
    "20260812000578",
@@ -2882,7 +2885,8 @@
   "title:222800": [
    "심텍청주시에4천억원투자반도체생산기반확대",
    "청주반도체생태계커진다심텍4000억원투자100명채용",
-   "심텍소캠성장에코스닥시총상위권5g스마트폰용기판확대"
+   "심텍소캠성장에코스닥시총상위권5g스마트폰용기판확대",
+   "충북도청주시심텍투자협약체결"
   ],
   "title:475150": [
    "sk이터닉스의성황학산풍력발전단지상업운전개시연간14만mwh규모전력생산",
@@ -2897,7 +2901,8 @@
    "dl이앤씨국민연금실력행사가능성은"
   ],
   "title:095340": [
-   "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝"
+   "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝",
+   "isc대아티아이내일장예감좋은대박종목은"
   ],
   "title:458870": [
    "씨어스씽크에ai심는다ai증강병원구축",
