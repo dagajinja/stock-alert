@@ -251,8 +251,6 @@
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE1aS2xNUmNob2x1bHRoWEQ4MFQ4bmtkZDJ1V083c1ppMmp6Ri13S0FXSHZIWTVsMFZzSFRVeTE3eGRKcXU4X3Z1bUxVWHNDenFCbVBPNEU4VUZyc1FDS0tkajA5czNKYXpWeUtZMjNVejUyZTA?oc="
   ],
   "news:375500": [
-   "https://news.google.com/rss/articles/CBMizgFBVV95cUxOd0VicmJXMHdsY2x1Ynp1UUhrbS04aHl0WWFaalk2U3hPenZidVF4WFZpMENjTnNhandTc2h1ajM3NHgzZGJFeE01VjRfaGlSQVpEdFFHUW1WZ3h3NVVOOWJWQTFFdmhldWllVXZQWGl3SlZfa3d",
-   "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5NRU9jNERVODVpcVpnLUFDRU1aTmVySXktWmtVYzFzRV92Y2FiSXBoMmxvYU5NYWt0TXQ4M1BnZWE2dngzV19lTnZlRWJVUC0zamt6cEZ2TlNCcVdQdGc?oc=5",
    "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1zRTNtdndjY3dRZWx5NHdZMmIySXdXdkVlUEpvaWJLUkZmamRaWGVtc2dxSk96OG9uQjdnb0IxNnhxQ1JGWmdDTm5HZk93WFdfMGxJQTF1cmhOcTFQV3c?oc=5",
    "https://news.google.com/rss/articles/CBMibkFVX3lxTE1pR3FubU1HZmhOenlfdzQ5LTZ1UW1Td3A2MlpsNG42NHdJYkx4alQ2Ni1hS3hLeWRFNFhKNG8tZlF2X1ZSMHhTU0VfVFJLdWJNLUwxYzRUdGd2by15RE5CUHg4aHZNNEVsTko4bUhn?oc=5",
    "https://news.google.com/rss/articles/CBMizgFBVV95cUxOeUtvcWFfeE1BQl9oczRQa1NMN0RkNWNUYXBNcDQwSzc5TVdFYnZURFFRNGMyQllFZEhzVDVhSElmMHdyeTcwS3hoYy1Sdk1xR3JOOGR4M2N2QzZBdDRicjNpaXd6NC1FUktETHQ0ZE5MQjlIU1Z",
@@ -650,7 +648,9 @@
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5YdjVXbExfd2t1NnFFcmhZYUdsUnQ2aUJpNVlldlV6aFlFSF9odjg2eUxsamlmUVhHZkNHNHo4YXFDUWpXZk9DdklIY0gzWEc5OVR2MHRUZTFzN1Y3NGJxUWJyeFBlVzRZ0gFsQVVfeXFMUEp4N3Y",
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE5DZ01aQ0FXX0RRSm1YbkotR0ZpRkozS1UwS1hTaFpmR0lneWVUTDBYcFc3ZlhvcHkxQWY3T0JuV21YXzgzNGZIUlJXRlRoY21aQTVmTGFNSUY2dF9qd1hMUTZ5a0QyN3NrLUhNeUVGSEU2dEk?oc=",
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE94UGhGaDItVk5YaklUSkVscjFCTjVFWVhmeHJoQ3BUMUZMWDhfVVhMclVoX1BKWXZQdUlhaFlaZTY0SHFfSE82R1c5dXNJZUl5M3N0Z0V1VmowUUVVMXhFMzBNV0RYcVN5X0h2RDFobWhTMFE?oc=",
-   "https://news.google.com/rss/articles/CBMid0FVX3lxTFBCTzdhR0s1OWl0b2NzVjFmVmlieG9wbjExeVdIVWZKZkQ5T2YtYkl5dy10T3RHUjdsQ09HeVh2NVFPUVdVQTBlcUs3Wm1URFZTcURvOUFOb29BV1Q5b2w1Sy1hc3VqOWdQWENtOTZITW9STW5yZ0s"
+   "https://news.google.com/rss/articles/CBMid0FVX3lxTFBCTzdhR0s1OWl0b2NzVjFmVmlieG9wbjExeVdIVWZKZkQ5T2YtYkl5dy10T3RHUjdsQ09HeVh2NVFPUVdVQTBlcUs3Wm1URFZTcURvOUFOb29BV1Q5b2w1Sy1hc3VqOWdQWENtOTZITW9STW5yZ0s",
+   "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9nNVppMkd4ZkRFRl9kaGQtREdyZ2doMDZwdEFibGNUNDliR0RveVdPcUkyeXBUdG1FS1JXY1picUxpcUNtR2JWZTdOQ3FuamdLZkhZ?oc=5",
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTFBqai04am10Vjd2SXBEQy1YUW1hcUVBcTE4Q0tFTmFCaFd0MmRtdTlaZzYyVm43NnJqRzBhbVNURmp3QlFHYnJ5YnFmVW5vVmtkRi1DbGYxeVpqbS01X0ZmSERZVnZwX3BTMDYyMHVnWS1TR0E?oc="
   ],
   "dart:222800": [
    "20260805900457",
@@ -2655,7 +2655,8 @@
    "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1nZV9XRzZ2MW4yQ09tX0JhdVduQ3FtUjNzeGxpMXo4VmN0ejc3Y1E5MnZEZVR6MnE3V2FJalR5MzdsZDcydDNmcTQ5VWliUGlqTjVQZTdZVXgzQUpLZnNMY9IBeEFVX3lxTE1kekxWZjdUcE5GZWt",
    "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1fTi1nejhISzNQYnJxVEp2UWszNXh6SFk2d2p0Uk0tU3c2ZlRGYjBGaExOLVViWkQ0bXU1OGxxZ1FOYkUxVXpIUHZkN0s2ajlIX0k1cGdGN1RMRVB0Slo3clpB?oc=5",
    "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9VM2NOSnJfd3ZxOXItVkhxVFpYUWFrdmdMNnkxam1PNUd4OEJyN2VCMURZSFBkTkMwOHpfZUZMcU5HRTY4amlpeWYxRi1wRkk?oc=5",
-   "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5NZFNoMm40dWk2VFdLUExqbVFlem9LV1hWa2RIVUh6WllpQTBfXzhGcUdpUjMyOE1KWEwtZzZCZXVSQlVPQmc?oc=5"
+   "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5NZFNoMm40dWk2VFdLUExqbVFlem9LV1hWa2RIVUh6WllpQTBfXzhGcUdpUjMyOE1KWEwtZzZCZXVSQlVPQmc?oc=5",
+   "https://news.google.com/rss/articles/CBMibkFVX3lxTE1rc1lpV1RZWjZiT1p4VnczWTRHN05SS2VsZElWd013Rkx0OGNuQzJIS3pRckl5a29ONUlsSjQ1ZXoxbVFFbVFZU3hoN0swelo2X1k2VGZVaGRfcEc1XzEwNmpid21xYm9Gc0ZDU0lR?oc=5"
   ],
   "news:388210": [
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE1zVjFYZ1NZU1F2MmZYTEFqV2ItbkY1TDRMZHh1MkpsaE04YlV1ZzlXdjlQcjdOd0NwTXp0ZjFic19NcUp5alhDNktyYTNFZllUTG9kZzBBT1otNjYtUGd6dGRTdU5oa2hLbXF2YktlSjQ2Ymc?oc=",
@@ -2898,13 +2899,16 @@
    "sk이터닉스사모채금리6대뚫었다500억조달"
   ],
   "title:336570": [
-   "고주파에초음파더했다원텍올리지오신제품공개"
+   "고주파에초음파더했다원텍올리지오신제품공개",
+   "원텍올리지오차세대제품출격해외성장세이어간다"
   ],
   "title:375500": [
    "dl이앤씨국민연금실력행사가능성은",
    "dl이앤씨최대주주일가지분소폭감소이준용친인척보통주전량매도",
    "dl이앤씨최대주주dl측주식등보유비율003p감소",
-   "수익성챙긴dl이앤씨2조대어성수2지구가수주력시험대"
+   "수익성챙긴dl이앤씨2조대어성수2지구가수주력시험대",
+   "dl이앤씨성수2지구단독입찰수의계약수순밟나",
+   "dl이앤씨최대주주dl등주식4944주감소친인척이준용장내매도영향"
   ],
   "title:095340": [
    "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝",
