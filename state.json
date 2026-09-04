@@ -662,7 +662,6 @@
    "20260901000189"
   ],
   "news:222800": [
-   "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9uaVpzWm50dmg1WVJablVtbzkxZld5dFdTU3B4UVNFWURZeENOV0gyWkU5ODhoLUlqWlhqV3A4RkZOdHpzV3ZsY0g4b2R5aFRwZXc?oc=5",
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBHMlFLakFZMkhKTWFpajdlN3RvQWVBQWlNU2lrUWtJR1FFeTcxUTlYbXZsRFJzNEVCRVFtN0xzYzdIVGhrZkR6OUh6a05Vdk5MZFMwcFVZQXVpV194ZVBFWWtKcHhkZ3c2NFdn0gFvQVVfeXFMTnR",
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE9mSHU5WUE4anQ0X19mY1pmc083YlFSNU9BaGpTa25JQ3ZFU3M5YzFJeWV4Q2pMQjdjNlpkU1VuM0pxUUdlMEU4TDRvXzVETzFhcEFvV1dWZTMtZUd6TDdnUDFBTE11cnpvNl96aXJiUEFCV03SAXd",
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1MUTJRbWZ6YnVXRE1hdmVXVXlfRFFoaVBuVnJjTHhGWXhGQnQ1Zkd5UkxlMHVNTWZNWmVsQmxVaEg0b1VkM2NZTGU1T3E3VzJnUjlRSndDci1mWWp6dlk5V29hRk9tS2ND?oc=5",
@@ -1061,7 +1060,8 @@
    "https://news.google.com/rss/articles/CBMiRkFVX3lxTE84ZVZuQUl4M2JoTDdrOXhTUXJ6TVM3RksySFJWaHh3cmJreU9BUzVnMlhVNFEzQ0tIWnZySU5RczZNa3NSd2c?oc=5",
    "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBQdTVTdVRaUkYySXAzRkpLVXZQWHhOaXo0a0tmbWpYY0JfUl9mZDdhQzRPeVpUM1J6OVN1akFScjYyQmQtTWtKbHEtcDVKc1ZvN1NNSVFPY3hJNll4T2c?oc=5",
    "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBfT0dJODI2dEJpNEpMMUotNTV4TmFEN2NWaGlDR2RPRFNsT0dFSjc2NUkyRkE3dFYtdmdNQ19WelI4T29xdzlqX25aWEFKSFhz0gFsQVVfeXFMT0h3OWV5eGpiMjRucHpwaGF0UUdOS0UtOG8zX1p",
-   "https://news.google.com/rss/articles/CBMiT0FVX3lxTE42blVsZkN5NTBBM21aaEZjY3RhOXAzZ254MDFLZkg5YlQtQTZPWG8yaUF6RVFCQXo2TGlsREN4OEV0YmhQZGVjUVFvNnhGdWM?oc=5"
+   "https://news.google.com/rss/articles/CBMiT0FVX3lxTE42blVsZkN5NTBBM21aaEZjY3RhOXAzZ254MDFLZkg5YlQtQTZPWG8yaUF6RVFCQXo2TGlsREN4OEV0YmhQZGVjUVFvNnhGdWM?oc=5",
+   "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1RVWg4clRaZjJncmRONVl6eUp3eXd2SWxZa3E0TF9hb2RFSGU4M29tZTZJZVdJdnBRR3FBSzhaQjhsZWxaRWJVUC1vUnQzMlNzREhwSWI1NlhVdG1mRlV5UjB2N29xZDVr?oc=5"
   ],
   "news:458870": [
    "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1uWjY0eXhrR2MtcVFqYnNQd3JFbTFxOHRtNVg2d1VzQkQ2dENhR3VDbVNlTHEyNGgybklxNzBWbGlRRHVCTTl4ek9aOEFQUQ?oc=5",
@@ -1606,7 +1606,6 @@
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE5nRmZmUGstclFEaWdpSzduZm5SVnNUdGZ5WGlrOUI4ZlE2YTBJcnJmSlViQjVwdWpLcUxvbkxVNGVyZlRvZ3ZpOEttRGpPQ0RDX09ELUw2WGFnaWltajlCYk4xTDEwcXU2U2RpQ0x4SkNLMkE?oc="
   ],
   "news:475150": [
-   "https://news.google.com/rss/articles/CBMiU0FVX3lxTE83SW5SNmh1X2htNnUwYTVaREk3ZHdFLWxjeHZPWW9TQTRrX3FKcUlnZU9tVWYxaDdmdVFlYkxqa2VzVXI3RU11VmdPcnlZcmpaVmFn?oc=5",
    "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9PTmc0b0M2QmlnZVpOczBsNk5JNFJWLXJLM1VtYlpqMnNXa05BSHJmTmpEckJ4U18zWTk3Y2NpLW1QRGFEZFRPRnBGUVZLZXdqOHNFRTZHSQ?oc=5",
    "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5xQXFQUEpQQ1FPNDFFQnd1N2RSd19WeXMwUFJoOWhQMmRhTnF1Tkg1bm5XTG5jZENYNjQ3Wk0tZjFjN2ZxMDV4UmFEVEl5cHRuenc?oc=5",
    "https://news.google.com/rss/articles/CBMic0FVX3lxTFB3OHNhUF91QTVyanZtcjNhWUg0NVM4UFBoYWFPYWYzMW5RZ2x6Q2tZNERJRlZUcHFPYTFBQlhaSExVcDRKVGl5UTVlZ3NPZ0Ixd2dpNktSSmxaTVpMNGZZQ2JYSkI4RzJYMGc4NHZOcFBDN0k?oc=",
@@ -2005,7 +2004,8 @@
    "https://news.google.com/rss/articles/CBMihgFBVV95cUxPY0MzWkFTeXF2R3Qzbk1rc3lKUkFyU2lYTHNwaGJtdWVQTWZLWVAtemFJSDg5cEg3RGtiXy1NTlhPeWIyckVubkdBXy1zdFFOajItNEZiTEM5VXFhOElCTW1YVUxydGhiaHlZTWIzb0I1cjRWejV",
    "https://news.google.com/rss/articles/CBMidkFVX3lxTE02TnlxZkVZbjRXX0YxU1NMWlhXakREYy1fTmZrVU1GNmlsVzVJMzl1OHlhSWEwR2JHRWhkQWo4OExXTkxPbFpYOE1hQnVULURESjFfV2hTWWJaZzgwMUVuUDV1NFJKMldFTkY1cXJEMzB6OVhXV2f",
    "https://news.google.com/rss/articles/CBMibkFVX3lxTFAzb1hlLVlPQ2JoakJMYUlxX3dwWW9SaTBCdU5xTWxLc20zR0VtM1l2RWV4SkJoVzJKNjZiZVlpN2prMGV5bDQ2YzNfcFRsZkFzcmJ6aEl1eEdRM3NqT0huMXNRMjVtYk9pdWpwTWxn?oc=5",
-   "https://news.google.com/rss/articles/CBMicEFVX3lxTFA2Zm94d2xnM3MtZ25Fb0tiX2pWQ3J0RVh0dmRXODdoNExYMElpZmt0alFBVWtzMVBmMkhrRERRSlREbE9RT1lPVk1DUzZZUHpja3NRU204Z1loNG1OMkQtM0liMFpqNmNyd25ISXVzMnnSAXNBVV9"
+   "https://news.google.com/rss/articles/CBMicEFVX3lxTFA2Zm94d2xnM3MtZ25Fb0tiX2pWQ3J0RVh0dmRXODdoNExYMElpZmt0alFBVWtzMVBmMkhrRERRSlREbE9RT1lPVk1DUzZZUHpja3NRU204Z1loNG1OMkQtM0liMFpqNmNyd25ISXVzMnnSAXNBVV9",
+   "https://news.google.com/rss/articles/CBMicEFVX3lxTE9QZ2t0NE43S2ItcWlvMXZNME1ualRLWkJLUVZWTzRtV3Job1U5UVNqY2xKOXlvLTRFNDY3dVRONzF0U3ZVSVNkZUJMenlzLVRuejU5b2I4OVptVHN3bnNxLWFDcTFRdC0tSkFodlgzRDnSAXBBVV9"
   ],
   "news:095340": [
    "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA2QU5DS2lBUmJ3U0xPSFZnX29FcWNHNGQ3eGhmdjk3SlA0a3lrMDJtM0xCRVB2R3o2Um8wZ1FRbXRzMGFBckt5UXVlOGNEMnFtZXc?oc=5",
@@ -2232,7 +2232,8 @@
    "https://news.google.com/rss/articles/CBMicEFVX3lxTFBBc2xJLV90XzFqSzhmZkR5cVlQNFJwOEVYYTJFelpYTHdGNC1IYVlJNjBGVXRqSGRuZk9yZ0k1ZjhYWFBXV2tObFNhMUIwUXhYRWItSEFjdk8taXJzMzlHTmdNVjRhZUZraVFHN3BBbXrSAXBBVV9",
    "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBlcWpTUmVqYmZ3RnJTQWZZNDZMU2x5UkdYbWh5a2hXZDYzeGFZNHlRTmVHTUVYeFhQZVhUdmh6UVBWa1JXTVlDR2M1Wlhtc21TMU9DT0FuTnlqd0pUOS11aTBzM18?oc=5",
    "https://news.google.com/rss/articles/CBMieEFVX3lxTFB6STRRSXhtUGtmeHo2dG00cEd4MzN0bXFUa1k5UVFEM0hqdTlHSzlheUxQdC1Pd0FGTEJGMVFGUjVRS1ZnVW1zZ2xaeXJHNTQtdmtxRXdVTENLdWpSRloxWkU3TXVzUXJYNHRQWms5b01OYWdSVDl",
-   "https://news.google.com/rss/articles/CBMic0FVX3lxTFBsTTc2QXlrakpKQWt1Z1hTUGVZdVhRdnJmUGZFTy13N2VCblpXMmNLY1pSSUlibklLaFZWc2g3Z2RDZXRVNHZUSlNnTHlCZzYxVlVTb2ZLSFJacVFoMTVxcVdlZUJFOXh4OEtBM1NYMzQ5ZE0?oc="
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTFBsTTc2QXlrakpKQWt1Z1hTUGVZdVhRdnJmUGZFTy13N2VCblpXMmNLY1pSSUlibklLaFZWc2g3Z2RDZXRVNHZUSlNnTHlCZzYxVlVTb2ZLSFJacVFoMTVxcVdlZUJFOXh4OEtBM1NYMzQ5ZE0?oc=",
+   "https://news.google.com/rss/articles/CBMiggFBVV95cUxNTHJVcUdSaDRVcWRSMmUxS2toNmNUSTRCSTdPM0hsWEZaaEVuMlY3MVo1YVI2VTd2UFd4NkR5Mi1TQzZDY3J3M1RnanFSZWhnelJJV0doaTUtZXhKVWlTUXNSR0tnc0dqUXlJdnV2STU0Snh2ODJ"
   ],
   "news:039440": [
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNX2tubmZma1VjYVc2LW5BcTd6dVFFQ1gzUFR4QzA2VE13a01HWkVWRlVKNGxycURGaWpfM1M1VmFZU3B1bjNWWHhxOGxGNXRqckJUT2xrd0Q3TXVuUXpvdWhsRHN6QnFYWjlv0gFvQVVfeXFMTVQ",
@@ -2921,7 +2922,8 @@
    "sk이터닉스유형자산양도등공시속약세마감기업주식정보",
    "sk이터닉스엔라이튼전략적파트너십으로재생에너지협력강화",
    "sk이터닉스엔라이튼과재생에너지사업협력데이터기반자산관리강화",
-   "sk이터닉스재생에너지전주기협력시동ess입찰ppa시장도청신호"
+   "sk이터닉스재생에너지전주기협력시동ess입찰ppa시장도청신호",
+   "sk이터닉스엔라이튼재생에너지분야확대위해맞손"
   ],
   "title:336570": [
    "고주파에초음파더했다원텍올리지오신제품공개",
@@ -2944,7 +2946,8 @@
    "isc대아티아이내일장예감좋은대박종목은",
    "전기에너지자원isc과정평가형자격교원실무역량높인다",
    "2026년9월3일알테오젠두산퓨얼셀아모레퍼시픽코스맥스한국콜마한솔케미칼isc현대건설두산에너빌리티케이뱅크카카오페이",
-   "isc투자분석20260902"
+   "isc투자분석20260902",
+   "댓글isc테스트소켓강자경제적해자와연간실적전망"
   ],
   "title:458870": [
    "씨어스씽크에ai심는다ai증강병원구축",
