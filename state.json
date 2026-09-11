@@ -678,8 +678,6 @@
    "20260904900533"
   ],
   "news:222800": [
-   "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5NblZ6aWh0RzI5LVgtTUVEUnhGb0lCNzZoc1JSU1JtblR3YUxxbnVHem1Rc1JuRzBDWFN0eXdJWHM1aGFKZFByS0Z1LVE2ZENRaEdMenRB0gFbQVVfeXFMUEU4QjlPRW5YcDZJaGJKOHVZY3lSeGU",
-   "https://news.google.com/rss/articles/CBMibkFVX3lxTE15MlIzVFllb1U3aGx2ZWxtcmExdVp3TzJQSzBFMUFEUzg5cGFVbGtqX3FCaEExYWZGZ0xHb1BTZjVVRW1WeThIYXRaVENwMkhCcTd5TTlEN1dYeUsyVEYxVnlJS3hMekdXVWdxRFp3?oc=5",
    "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9sNG1EOVNLMWNEZ1FzVmZGRkNNMUpoZ3VNekxsQjFGYVVHVUo4R1gyTTY3Q053Ul9jS1BHZGswVWVFekZjelNsb05KTldpU0ZLY2xVUUlFal9fMk8yNm5oVdIBYEFVX3lxTE9sNG1EOVNLMWNEZ1F",
    "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBoZTBHVzRlWThXVG9fMmpyckRvYWlSZk5YSTlKQVc3dmpjMTZ0dERQUml6cktQNWNEcmVFNlJIalIybXJtcGRRNWswTzh5VHg4UDhvYi1JdnM4cDRKcXNfQ0w5Sk4?oc=5",
    "https://news.google.com/rss/articles/CBMibkFVX3lxTE9mNjRDNV9ZRk84WUZlSWo4YlZMTUVnazhZRm82U2dxd01uLWNRcW5NcmluZkVkczF5RWY5SmVmdGFhR1lUa3hHQ3NzTks4YjFhbDVINUhNVlc5WUtIXzV5dU5GQWF4U0g1bFpERjFn0gFyQVVfeXF",
@@ -1077,7 +1075,9 @@
    "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5pMlZ0cnZCZWtGa3RsSVhYT0NpTWhaaGM0VEQwVUE5aUZiVk1vRHFUaHlrREIzTnBaYjItSXp4OC1GX3JtbHJoS2FfMA?oc=5",
    "https://news.google.com/rss/articles/CBMie0FVX3lxTE9RT1hMY3IycDFkQ3UwR2FBSEpCX1lyejdXQWFTdkVGNlZ4dHR4MVdZeDgyZm5oR1NLN2IyLV9pQXJ4VENhQ21PWEF4YWFwRVBGeUFLbWNfV01IcVV1dF9zU2lPWVZsSzNZblVIaDIxcHEwZHFkMUh",
    "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBmWElGZkhpUTFCejZiWEpKYl9CVk5VOUNsclNuanVjWmJtZThpTjhJVC1oaFBaT1dGMjhTWUVFTFZXNERWMDc5SUh4TQ?oc=5",
-   "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9lSEpIejI2LV9Pc2t1UnZrRnV2dHVOR252ZHozaFNhVXpnU3g0NkpfVmtpR1lYZVd6V1N5dGtSMnpjZHdqV0pXWEZlODRhbmpPTnJmMmRGSWI0QUp3WnVNZlZ0dTV0Mk1q?oc=5"
+   "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9lSEpIejI2LV9Pc2t1UnZrRnV2dHVOR252ZHozaFNhVXpnU3g0NkpfVmtpR1lYZVd6V1N5dGtSMnpjZHdqV0pXWEZlODRhbmpPTnJmMmRGSWI0QUp3WnVNZlZ0dTV0Mk1q?oc=5",
+   "https://news.google.com/rss/articles/CBMia0FVX3lxTE1vdjltWkItbnRkSWlMOTBTTGlwZnJxWllNV3NhckRLdFAxQUt3UjdXeEdneEt3TjJjNjNHYnJVNzVmdU1FQTNBWTh2WVBTUzMtUHhOYWZFWEMyRGktNjJvLWdwVndtWHRSNmM4?oc=5",
+   "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8wNktRRGZTTmN4bUF4dDdUb0pBbVFtOFZYSHJQclBoQnFMaVUxTUR6TWFlY2lUVnlkOHRCZGlrVEV4d01uNnBPdm9lVXBoWFVGLVJrR3NkYmtBZw?oc=5"
   ],
   "news:458870": [
    "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1uWjY0eXhrR2MtcVFqYnNQd3JFbTFxOHRtNVg2d1VzQkQ2dENhR3VDbVNlTHEyNGgybklxNzBWbGlRRHVCTTl4ek9aOEFQUQ?oc=5",
@@ -1431,7 +1431,9 @@
    "https://news.google.com/rss/articles/CBMiVEFVX3lxTE40c0lLTTFOZENqZmdZWjJYbldsdTdJRHRxcU9tekJCLVRUSjJ5U21JYm1McmxMMmxGcnBhbjFwSTdpQmwxWUdRaXhkLWR0emlQS3M3YQ?oc=5",
    "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1Ma0N2dFp3S2Nya1ZlaE9pT3pNN01XdGhjaFFaQm9QTy12ZkJmZG1KUi1sc3phV292OVVsMDFjYU83em4zRk14c1VSYnE5MWhWX05oMw?oc=5",
    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA1MHJheW9jZ2xwUl9JRC13bkdpRFpyNTFxcHYwalpEbjc1ZlMydnV3ZENDT0tHWWV4Qkg4MlBrVHZfd0szMUctSHAtbTN3bjJ6dmZDWEY1OHZ0ckFBOXdBcTFCVmhJQkU?oc=5",
-   "https://news.google.com/rss/articles/CBMib0FVX3lxTE5qNVZlZ3NNMjAxTU5jd3NEOUFudjdJVnFIWVoyNk45bzd2RDc5TEh2UnIxaG14NHNrMVRCMzBOU2lLYkt0RVNBQzVwNi1UY3lZYXI0em1ZR2doczgtSGNtbHBzYV9BTi0wMFNMNVp2c9IBb0FVX3l"
+   "https://news.google.com/rss/articles/CBMib0FVX3lxTE5qNVZlZ3NNMjAxTU5jd3NEOUFudjdJVnFIWVoyNk45bzd2RDc5TEh2UnIxaG14NHNrMVRCMzBOU2lLYkt0RVNBQzVwNi1UY3lZYXI0em1ZR2doczgtSGNtbHBzYV9BTi0wMFNMNVp2c9IBb0FVX3l",
+   "https://news.google.com/rss/articles/CBMicEFVX3lxTE9lbHBQbkZjMnBRalFOa0ZZYVNWdV9ReE1WOFBKQ2ZxeGY0ci1sVVBuYjNrZmRMeWE4TkVaV0ZyYjlaMWtwX3FGYmlzYm1MYVBzY1JKeEIzOFZEQ2tHU0ZTQ0pZV2hCM0M5QjZTNllxZnnSAXBBVV9",
+   "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1hUW5IUmg0QzRPelVwaW5ELUtSN0xNZ2NOd2x5NlJnN0lxODhWQzE4czI5ZncyakhJWWx0TXBxM3RrYkE2T1M0MEhObEs2WjA2UVRkOTV30gFbQVVfeXFMTUF0UGZKVW5GWi1JZ3poODVST0VvSFh"
   ],
   "news:001820": [
    "https://news.google.com/rss/articles/CBMiYEFVX3lxTE8zd3E3aXA2ODQyMWt4X2VuWGtYSXdvM2o0UEJjeXBKVF9qR2Y0Um5aSEdITzQ3TEd6NzlRdFlTTDhYQXdvSXhhVGRFMkplbF9EbEl4SHp2eGtZbnU4azZzQw?oc=5",
@@ -2371,7 +2373,8 @@
    "https://news.google.com/rss/articles/CBMiX0FVX3lxTE42bWtVWGVIalNNN3pLUkRWcmdDbDhNN25LWWhmRGkxX3FnXzFYWEVpSndXV1JwZ1JHelJjeHZUTVdwVWlRUmRxY28xbG5LUUd0S29TYUhaTzl6ZV9NUUs4?oc=5",
    "https://news.google.com/rss/articles/CBMia0FVX3lxTE0td05KYU9SRFpaNlJOVDVQRS1iU3ZJNjBpaWRfdElwN0dqMGk3bFR5Szh4b0R4aHFFVDhOQmNWV182VWMwSjBKQ3VwV1ZLcW9oUmVMdktUdlJyclNGZjFwcVVra2pTLW5zQk040gFvQVVfeXFMTzl",
    "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9WX1FRN3BmVDB5cFExVG10RjhLUmxvdmZ2YzJDMnVqbXg1VXl0MjlsRE5Qc2xHbVFabmRKV0RZeHd2ai15bjF5MUNZRU4yMTZFRE4xRnhWbEFZR1B0d3ZfcVNnTm4?oc=5",
-   "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1qdjR0UHR3cmZzM3Z2VlMtek1VcDF4bDdTQ0tBY1VyQVFqVkhmUHRqcF9aenV0OXR2SG1XLUxGYWFCRnBuSnBQZ29hNWhackpaVmdlakdtSW9jQUtndXUweU02Yw?oc=5"
+   "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1qdjR0UHR3cmZzM3Z2VlMtek1VcDF4bDdTQ0tBY1VyQVFqVkhmUHRqcF9aenV0OXR2SG1XLUxGYWFCRnBuSnBQZ29hNWhackpaVmdlakdtSW9jQUtndXUweU02Yw?oc=5",
+   "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBOVHdoUWZDSC1wTmFOY0JVS1pyaHZkMkFYRHVueWhqWHpCSlZ6aXI2TDhuaVFqZFQ5QVkwM2w3d3BibFFsS0RUaGdHTnV6UTc1VUthaTU4QWNJNTNudkNJX2Nn?oc=5"
   ],
   "news:039440": [
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNX2tubmZma1VjYVc2LW5BcTd6dVFFQ1gzUFR4QzA2VE13a01HWkVWRlVKNGxycURGaWpfM1M1VmFZU3B1bjNWWHhxOGxGNXRqckJUT2xrd0Q3TXVuUXpvdWhsRHN6QnFYWjlv0gFvQVVfeXFMTVQ",
@@ -2855,7 +2858,8 @@
    "https://news.google.com/rss/articles/CBMibEFVX3lxTE8wdUhwOW9aWWwzNGlSRjAzZmhhQ09sVHFUTVJzdVMxNDh6YmJCeUZBMkFnWGVyT1FTODdiNTNLMGc1ZnZNNkF2NnA0dks3Zk81cG12MkxDVW9UZllsenc2N2E5aGFnbnhWMGUxSQ?oc=5",
    "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBXMEFpQ0V2MDh0STNqU3hDRHpjYWJDR1JCaTlIbWJKUkZPTXJuMGJlVk1YMWh5M2dkbWttbm5sWXh5V3BNMkJkQ1htRXljTWZYUjc5SWx0RVVtUEHSAVtBVV95cUxQVzBBaUNFdjA4dEkzalN4Q0R",
    "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBRRWFHT2xPMmFhLWRSNFVjOVRoaFNEOURuWjNOcW92SHhJODJ6SUxSQXJ3ZUIxTlJDU1VMYzVzOHlNNkxCbXU3akw2dDVWUQ?oc=5",
-   "https://news.google.com/rss/articles/CBMiY0FVX3lxTE8xU0hhcHF5T1ZkSUtPYjEtQUk0dEVlamtaQWhPZFdlMnBMWVEyVjZPZm1NQ1ppQXZsdGdhTjdVYU5PVTNVTVJoWGV6MjlwUGpJcUt2TmtybDZCV21aTkczUloxaw?oc=5"
+   "https://news.google.com/rss/articles/CBMiY0FVX3lxTE8xU0hhcHF5T1ZkSUtPYjEtQUk0dEVlamtaQWhPZFdlMnBMWVEyVjZPZm1NQ1ppQXZsdGdhTjdVYU5PVTNVTVJoWGV6MjlwUGpJcUt2TmtybDZCV21aTkczUloxaw?oc=5",
+   "https://news.google.com/rss/articles/CBMibEFVX3lxTE5HeTBrblNDcHU3UUVrbjQzVXoxX0xaQ21UNWo1RUpOd0xzVWtzc3oybVNRZWNuN0ZtbURrU3FjSGh4YUIwaWZ0LUdlcjJIbWZGek91cU5lQldQWExaQXlhc0M3Y0wxbVV3RmZURQ?oc=5"
   ],
   "news:388210": [
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE1zVjFYZ1NZU1F2MmZYTEFqV2ItbkY1TDRMZHh1MkpsaE04YlV1ZzlXdjlQcjdOd0NwTXp0ZjFic19NcUp5alhDNktyYTNFZllUTG9kZzBBT1otNjYtUGd6dGRTdU5oa2hLbXF2YktlSjQ2Ymc?oc=",
@@ -3022,7 +3026,8 @@
    "https://news.google.com/rss/articles/CBMid0FVX3lxTE9hLVBoLUdrSUZGaDR6d3NPTTlrZUFkbmtDTE95OERiWDRpa0UtWUxFSXd5dTVwbHpXUTZndkNHck13TDNYSHpLQy1ZWjhmeUhPaXdCdTFwc1FTTHh6TVhIX0JNT3Vjcmo3X0d2NG9xdzdPMEQtMzJ",
    "https://news.google.com/rss/articles/CBMiREFVX3lxTFBRVG9VaDVkQmZFTDFyU2puYjh4UTFWNGhqaXY4a2U2MWU1VlhvWV9kcW9iWUJ4bDlDQjlQbHpUV29tRkcx?oc=5",
    "https://news.google.com/rss/articles/CBMif0FVX3lxTFBGVEFXSnlrZVhHcVNNVndjY2NUcnU1cHpnckRwWm9YZUIwVjdQa2k5MXBCcUFTYVUzYVhtT05FQUU3aXpXVmhWQ1JuSG92ZUR2aXJvcFZDYnBfTU1JTGVpeXVjQkJwVW9DWF9QYm04ZXVIaGliaEl",
-   "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9LbHhSR0sydlRXcTcxSEhyWWRlc0FrUGU4ZFdHcGhxNDlKV0Ewdk5ZbjRkZlMzNU9kd1BBeFR0VnBCUklFblBxT2duRkx5cVdUVGdGNkpB?oc=5"
+   "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9LbHhSR0sydlRXcTcxSEhyWWRlc0FrUGU4ZFdHcGhxNDlKV0Ewdk5ZbjRkZlMzNU9kd1BBeFR0VnBCUklFblBxT2duRkx5cVdUVGdGNkpB?oc=5",
+   "https://news.google.com/rss/articles/CBMidEFVX3lxTE92SEhscHpMb2JwdFF4aGg3M3BQZjkzOVpvMFBuTzgxWDJBY2FVTGcxcUdORF9VVDhqUkkyaEZiLVpOdXNoSnN1S19idk5ia1ppUWYtNVNmR1ZJa3ZJeTdjdmY2Ylo1SEIzX0xWUFA3MjB6bGVQ?oc"
   ],
   "dart:053610": [
    "20260810000511",
@@ -3213,7 +3218,8 @@
    "원텍10이상주주김종원대표이사회장32만주감소",
    "원텍예스타와업무협약임상교육등현지화전략강화",
    "원텍대형의료미용그룹예스타와맞손현지공략확대",
-   "원텍의료미용공략본격화예스타와mou"
+   "원텍의료미용공략본격화예스타와mou",
+   "원텍예스타33개의료기관네트워크잡았다레이저장비현지임상확대"
   ],
   "title:375500": [
    "dl이앤씨국민연금실력행사가능성은",
@@ -3302,7 +3308,8 @@
    "씨어스krx헬스케어지수신규편입의료ai사업확대",
    "씨어스krx300이어krx헬스케어지수편입지수내유일의료ai",
    "씨어스상장후첫싱가포르ndr나선다글로벌기관투자자연속미팅",
-   "씨어스krx헬스케어편입흑자성장속존재감확대"
+   "씨어스krx헬스케어편입흑자성장속존재감확대",
+   "씨어스실적성장으로krx헬스케어지수편입뷰노고려대안산병원"
   ],
   "title:001820": [
    "삼화콘덴서투자분석20260903",
