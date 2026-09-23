@@ -689,7 +689,6 @@
    "20260904900533"
   ],
   "news:222800": [
-   "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5menJiYVJVR2hmMFBZQ2dpQUZoeU1fTE5BTjJ2NG5sTExvbHZaa01tTnFBOFFOVWxOYUg0ZnhteDlIM3BFaE9Pb2xhQVpvNGp1bWNv?oc=5",
    "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9QNEVVSWVqdW5JWlpwZFE1dnI4clNuUThZS1FRSjFwbXRPZjF5M2p1eHotcFRDOVAxMzdyLWNXSEZxOV9iZmdta19QNFhsVUh0REE?oc=5",
    "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA0RlpLdDNIdDg2RlpoQXoySjY1cTJDUlc5ZmxBSDRCQ3JYZWhaYURHZThyVnFoVW5jREZGZ25kOUpianlvWndfNG9OS2xxb01YUE1CZXpzRTgwUGlk?oc=5",
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1xaFgtLUFzNDJMdGktTFpSU0wxWF9yVm5BN2xWM09yNl96MVNIdUFKR25fZEFIcURibWgwOER5bzVlUF9zZGhLMDJKRUdISUtGV0hvTUNia1otZlA0dHNvTDQzWjdhb0JW?oc=5",
@@ -1088,7 +1087,8 @@
    "https://news.google.com/rss/articles/CBMie0FVX3lxTE5TWTJpMU5lODVaNGpkY0QybjgxamNJYnMzUUM2OEJZWV9tb3lSOUdFR2tmV0pVTXdfUmV5aTQtZjc3WDY5ZVpNRERYQjhOQW1UWmItTUxXQ3FTdm1tQ1VkbEtpZ3l4Mi03N05jNlNRbUQ3SVF6Z3B",
    "https://news.google.com/rss/articles/CBMic0FVX3lxTE9WbS1lZGJ1UEFVZFRNd2hPOWZ4NW0wV3JCa2tubGdJclB3cTNxd0VhNkpGRDdUME5HOGp4cGNIUXQwOW1YdnJnLVJtakFqTVJJeEhkN1ZlZFJxMS1FemVqN1V6SjJoc3c4TWNxRXJHZ3YzZEE?oc=",
    "https://news.google.com/rss/articles/CBMihgFBVV95cUxQSXdHa1NaT1NuQkhNdWRvM0ZnSWVROHFzeGpCZmxHRW01a1dTLXUxcHcybEl6NEp0VmhnRU1qd0FwRjdnX0d2RktTQjNKWlNaQTNVZDN3MWlIU20zWE1FRmIya1QtZFpOTjl6YUpZeTJzZGV0NlV",
-   "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1EQmJWSTZpbUNqcmRBNHh2SmJtNzRULTNEY0gwSzJUTlhxUFBrZzhRSU5PVEl4dk45eWJyM0lxSklTWUxjMTdYVjV4STVzakJIZFVBOE16UVp6dU5TTTNGS0VUdnBCUQ?oc=5"
+   "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1EQmJWSTZpbUNqcmRBNHh2SmJtNzRULTNEY0gwSzJUTlhxUFBrZzhRSU5PVEl4dk45eWJyM0lxSklTWUxjMTdYVjV4STVzakJIZFVBOE16UVp6dU5TTTNGS0VUdnBCUQ?oc=5",
+   "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1vVWhFaWwwSXBjVHRLTmZudHJOUXgwX240blVtNEJOMDdpb2F3MDgyQ3BvWUxUeHI4VkZjWVpnZHdSYVdVR2c?oc=5"
   ],
   "news:458870": [
    "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1NWWFranV1bW53c25adE5fTEVBTFRXNFZyZFl1cDRzRm1PRld1YjlRQTFVd2piVjBTZzE1S3BERnd6TUpETlNCY0Ntdmk5SXJQc3g5UWhMMXFESl9u?oc=5",
@@ -2475,7 +2475,8 @@
    "https://news.google.com/rss/articles/CBMicEFVX3lxTE1SVFlCWEJ1RW5YbzVnY3BFME02bHZBclFITXBoWm1ZR2U1cnNuUkRGYVNrNFVNbGJXbXcyZzk2V1prWXhJeE1xcEE2dFpkQ0JIRldzdWNJYnE2TzFMUWFXd2hFMFFnX3FMQzljSUFjZlfSAXBBVV9",
    "https://news.google.com/rss/articles/CBMibkFVX3lxTE8zX2JPUzJkbVVaV3FuQVVoTXZ3M01fdXJrQUgzWUhyWlFnQ2szNUtDM1pmb3JMbHM5b0xwS3RMYWgwTzB2TW1lby1sSWZzNE1xRFdyb1dWcldaMm5IdGNDWDJfa1dmaWNyenZBWXVB0gFuQVVfeXF",
    "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1kc1hNbjN6dnZDV09tN3VyOXV2dTJRZklRWDk1WjgyZlh4NXpjRjF0d3JTalR3T3BBem1saHZNV0lkUnF4bHM0RFk5Q3YyZmJ0WU5FMTJOMWZwTkZ4V3VV?oc=5",
-   "https://news.google.com/rss/articles/CBMia0FVX3lxTFBUZ2JXRGJwNVNHOXo1Y0FXVW9tZ1FuTFQ1a2h0S2g4dDZ6dDFVQVpTTnFITDVOaWxWZWl0QkdWUnJUZnNXbDBPNTFaVE96bHYxR0Z2REo2S2RRQjhiX0RvN080eWVzV2Y1RThF0gFvQVVfeXFMTlU"
+   "https://news.google.com/rss/articles/CBMia0FVX3lxTFBUZ2JXRGJwNVNHOXo1Y0FXVW9tZ1FuTFQ1a2h0S2g4dDZ6dDFVQVpTTnFITDVOaWxWZWl0QkdWUnJUZnNXbDBPNTFaVE96bHYxR0Z2REo2S2RRQjhiX0RvN080eWVzV2Y1RThF0gFvQVVfeXFMTlU",
+   "https://news.google.com/rss/articles/CBMieEFVX3lxTE9yT3ZjNnIzdEFrYng0RE02TUZHYV9NczNJRTZJVmN6akNSME5ILTZRUElwTEdINHRwRURZdFFUSXp1bzcyRm03QWZsQjUyNE0tRzlFN3BmMXlQYU1YUWxhVzEzUEpPa2ZHQUhNOG4tTFctTWFFMy1"
   ],
   "news:039440": [
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNX2tubmZma1VjYVc2LW5BcTd6dVFFQ1gzUFR4QzA2VE13a01HWkVWRlVKNGxycURGaWpfM1M1VmFZU3B1bjNWWHhxOGxGNXRqckJUT2xrd0Q3TXVuUXpvdWhsRHN6QnFYWjlv0gFvQVVfeXFMTVQ",
@@ -3498,7 +3499,8 @@
    "ktc기계isc일터혁신포럼개최원하청상생우수사례확산나선다",
    "isc한국ir대상최우수상수상국내외투자자소통강화",
    "isc글로벌투자자소통강화행보성과머니투데이",
-   "글로벌투자자사로잡은아이에스시isc한국ir대상최우수상품었다"
+   "글로벌투자자사로잡은아이에스시isc한국ir대상최우수상품었다",
+   "2026년9월23일sk하이닉스삼성전자리노공업isclg에너지솔루션기업은행bnk금융지주한국전력naver달바글로벌크래프톤"
   ],
   "title:458870": [
    "씨어스모비케어캐나다의료기기허가북미상용화추진",
