@@ -277,8 +277,6 @@
    "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBkZ2lwQlFGcTYxaWFKNnFfemZJaUFuMXM4QmFzdnFLclBOTmt0OHhSMldxVjA4U1FYdllEYV8wQzluTnZuUkxDREZmazE5UQ?oc=5"
   ],
   "news:375500": [
-   "https://news.google.com/rss/articles/CBMicEFVX3lxTE56ZlVYa0FKRG1URXdKUGpOT0U0SDlyVDlRMXV4WjY3ZFFxZ0l2SEk0VkJUN0xibzFuck52ZEdwTGF6NzhUU1VBZTRqX2c3cElZX1RkOTFyMURnbU1hSXBwYjNCN3loQVNvTFlmVTh1ODY?oc=5",
-   "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBicDh4SXVDVkFHS1BYNjV6VTYtNGlKMHFpeFU3WWhFMHc2TkdNWFN0MFhnR0RxV1Bidm5UWExDNXpkYUo1VlE0Q3hKaXh3WGI5VkY3Q0hLVmdRanVBTGNZNnQycG8?oc=5",
    "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1IcWRrQmFXczZKUlVpdnF1bTE4WGdobkRteE9HZmNNTE4xT2N6YnpOOHVLcUUyMUFNSDJNSG1oemNSZ01tY1B1T1lDclNWWnZtc3ZEVnlXeEk3QVJKam4wOA?oc=5",
    "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBCZ3Zzakh5WjZHcF9ZSnRWZ0dQVzNRNDFCN29lOXl6MWpTNlZwakRwckpOU0w0TUF4RUx2bUFDa3FSS2dhZkUxa0lkYU1BTFNVbXRxdjdtQjBaa2hDX1ptLdIBeEFVX3lxTE5GWHdvT1M5MDVMTi1",
    "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9UcVQxUWd6RC0wNWNRWFBPSWE1Nk1zZ1dvck5HVGNBbDFkUTlqTWJoRThSTm5WMTFHZDVWLWVjVTRmUU9fSzVmdF96bmMycnVJTENucg?oc=5",
@@ -676,7 +674,9 @@
    "https://news.google.com/rss/articles/CBMic0FVX3lxTFBsZU92TVlDYVVhQUtDRzlkS0ZOYWpjclZYbUVYc29LZFBMRXU1TUs1Ql9rWkJmZFBRMFdsZEFXcnpVS1lXcGszOWZuVXozVzNQNVpGRmdVMV9VblM0SllTZUxzTE9wYnZOVTd0Nnl3NXNsa1k?oc=",
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5sRXRlSHl6OVZQTU1zdk9HT09xZ0NZSjVrN2wzd0lyb2RhMlJOeFd4OE9sM3RpN1pqUkhoOTcwckVFcGR0aXF4MlJ4NUt3bnJ5YnVMUGxiWGlxVUd0dWZWSk9IQWk2Ulkw?oc=5",
    "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Ma3hPRHpmeWRzYV9tVDJtdlJyNkNQN1BtNjlPa1N5UUczcUZfZER0UFR3U0d5YTRPRmhjaDdMdWd5RjB2aTlPZmxyMmZCdEpTdTltN0VRUVptVG_SAWBBVV95cUxQYzZLTkYyWWU3bzU2cVBKeFF",
-   "https://news.google.com/rss/articles/CBMic0FVX3lxTFBYalFFNmFmc3NSTlhRWUh2QlJ3VXZ4bmdWVGN6dHgtWWZxV1VqQXpleVZhZkdtWnJtUGpuMEozV0wtTjhOMXlQLWg1cExneG1ZSlNhdjlVT1NEOXNHSVlpS2ZnWDFBa1h6Nmx2SGY5ZTd2Q00?oc="
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTFBYalFFNmFmc3NSTlhRWUh2QlJ3VXZ4bmdWVGN6dHgtWWZxV1VqQXpleVZhZkdtWnJtUGpuMEozV0wtTjhOMXlQLWg1cExneG1ZSlNhdjlVT1NEOXNHSVlpS2ZnWDFBa1h6Nmx2SGY5ZTd2Q00?oc=",
+   "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5STFBXeS1yU3R4T05WVTQtWExOUTIta2dpTEk3N1E5c0twSTJQZS0yNjRsc050YjVfVnJyQnhFei1OSV84cTEwdUZB?oc=5",
+   "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1TU3lkTGVIbW9iVUs0YXIzc3MtTGdheWZYcko1WEg1WHRYZml5dko0dEZoSjI5WW9pRVRjN29MaUpYdzRYeG1IOXVn?oc=5"
   ],
   "dart:222800": [
    "20260805900457",
@@ -2476,7 +2476,8 @@
    "https://news.google.com/rss/articles/CBMibkFVX3lxTE8zX2JPUzJkbVVaV3FuQVVoTXZ3M01fdXJrQUgzWUhyWlFnQ2szNUtDM1pmb3JMbHM5b0xwS3RMYWgwTzB2TW1lby1sSWZzNE1xRFdyb1dWcldaMm5IdGNDWDJfa1dmaWNyenZBWXVB0gFuQVVfeXF",
    "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1kc1hNbjN6dnZDV09tN3VyOXV2dTJRZklRWDk1WjgyZlh4NXpjRjF0d3JTalR3T3BBem1saHZNV0lkUnF4bHM0RFk5Q3YyZmJ0WU5FMTJOMWZwTkZ4V3VV?oc=5",
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBUZ2JXRGJwNVNHOXo1Y0FXVW9tZ1FuTFQ1a2h0S2g4dDZ6dDFVQVpTTnFITDVOaWxWZWl0QkdWUnJUZnNXbDBPNTFaVE96bHYxR0Z2REo2S2RRQjhiX0RvN080eWVzV2Y1RThF0gFvQVVfeXFMTlU",
-   "https://news.google.com/rss/articles/CBMieEFVX3lxTE9yT3ZjNnIzdEFrYng0RE02TUZHYV9NczNJRTZJVmN6akNSME5ILTZRUElwTEdINHRwRURZdFFUSXp1bzcyRm03QWZsQjUyNE0tRzlFN3BmMXlQYU1YUWxhVzEzUEpPa2ZHQUhNOG4tTFctTWFFMy1"
+   "https://news.google.com/rss/articles/CBMieEFVX3lxTE9yT3ZjNnIzdEFrYng0RE02TUZHYV9NczNJRTZJVmN6akNSME5ILTZRUElwTEdINHRwRURZdFFUSXp1bzcyRm03QWZsQjUyNE0tRzlFN3BmMXlQYU1YUWxhVzEzUEpPa2ZHQUhNOG4tTFctTWFFMy1",
+   "https://news.google.com/rss/articles/CBMib0FVX3lxTE5VNlVKZUoyVTZQaFBGTkQtbURzTGZ6WDQydnhnU0Q4OU5saDcwS0dxcnFXVVE0YWhaeU1iNWpKSS1IQ1I2dEVGd3I4bENRTzFXMzhMZk5rOHE5VFBaQnZtTHdmZkdaX3JsOTExdkhHZ9IBb0FVX3l"
   ],
   "news:039440": [
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNX2tubmZma1VjYVc2LW5BcTd6dVFFQ1gzUFR4QzA2VE13a01HWkVWRlVKNGxycURGaWpfM1M1VmFZU3B1bjNWWHhxOGxGNXRqckJUT2xrd0Q3TXVuUXpvdWhsRHN6QnFYWjlv0gFvQVVfeXFMTVQ",
@@ -3467,7 +3468,8 @@
    "dl이앤씨중소기업과기술개발검증상품화등전과정협력",
    "dl이앤씨파트너테레스트리얼육군과원전발전시스템공급계약",
    "dl이앤씨중소기업과만든기술특허상품화까지연결",
-   "dl이앤씨기술협력개념바꿨다발굴부터상품화까지전과정연결"
+   "dl이앤씨기술협력개념바꿨다발굴부터상품화까지전과정연결",
+   "dl이앤씨중대재해계열사거래공시여파로5대급락마감기업주식정보"
   ],
   "title:095340": [
    "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝",
