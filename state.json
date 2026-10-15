@@ -303,9 +303,6 @@
    "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNSzZ3RUhhMTZ3T1hxMVg3TUhkRkFvMnltUV94MHBNMUlCSjdzSWdlUVhGVzgwT1pVdEdMZmx3cWZkaUpzWlY2RG1YVzN5RkltV0d0b3ZsNmpiZXdQcFh0T3dlZ1F6dmVrMWRDSi1BWTVwRlRsbmp"
   ],
   "news:375500": [
-   "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5FUGpSM2NSSnFWWUctcnZ5MEZqcUtudjh2V2hTMlEtSk42VGY4TWVxbnNlejFqd3htM1pxQnY0Uk11UWhHeVhmY3kyRWlGcjFOb1hLcEEwWmHSAVhBVV95cUxORVBqUjNjUkpxVllHLXJ2eTBGanF",
-   "https://news.google.com/rss/articles/CBMirAFBVV95cUxNMmVySjRGQVQ1Mmo5VHpXOEJwaFdJbUJTT2hseHNmc19wNFhjbGlPdEpmQnNsOHVINjZQU1NmQ3I4bHlpX1RwOERFbF81emttMzVQZl8tUGdsQTZ1YXBmMFRBTXpfWTRjODdVX05mT2F5cnVLVkh",
-   "https://news.google.com/rss/articles/CBMibEFVX3lxTE5sVnFDZk1vY1RXb2tUdVNqalo1Q1FEa1JTd0t4MW1mdF9vdXBDQXdUYkp4M0xLaTF3NGhaQU5HZG05OHdBbFA2M0txRy1oZEJ4ZGlLSXpjVlYxN2VmNFhyYjdid3QwZzlCZWs3dNIBbEFVX3lxTE5",
    "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9tZzZkYllmZnBzNVpoRGZwRG9INHdScmZKRENKY2NKQmdoelQ4OTRlZnM2SmlKdnAxRm8tMUlRV2t2STdYN0E?oc=5",
    "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB4a3pDUS1XMVJvNnpnYXI0anl3NXZTTWxNSXVQemRRMnRFQ3hiODZXWnIyWlJfaE1Vcl9FXzdrWWQ4Vk1iWGxVbnMyRkE1b1FmeUhwQVlQd0JFcmlqZ3dZV1I2QjY4R1k?oc=5",
    "https://news.google.com/rss/articles/CBMi-AFBVV95cUxOMHhZMnFfTGlKVzlyWHEzSzZTcHdKeTV6ODFYY0pnejh2bUJSZzF5MHRHeGliXzFkNVBtTS1LTmV0Mzg5U0s5ZnJZRGhud0lOZnI4bVVRMEdaTEVPSm1USDI1SWVUZkE0eW5QOUZjOWQ2WHYtcFl",
@@ -702,7 +699,10 @@
    "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5CSF8yb2xBcU13cXlIal9IN3VHWWpDaDl2Tllac1dYbVdEMVV2dGpxMWJ2bFZzT2ljYmpITDRRNlJfVGd1ZVlzOFRzQ1R3WjN6a1pyQ000UQ?oc=5",
    "https://news.google.com/rss/articles/CBMiSEFVX3lxTE0xbi1xdDR5SHZ3X2VFcEJsdHpGakotNWphOV8wU3ktck1OSG1NbzNvV1gyZnl3MlRRNmZFMEZqSFpoeGRycDFseQ?oc=5",
    "https://news.google.com/rss/articles/CBMibkFVX3lxTFBjbEE3dGMwWVJMYXFWdmY2QmwwREhYWG9nY3Z5MFo0a29jbUNhMjcxLURBdjFRY0NDWGVVRHhLUFRTYmF1RDlTVFFNZmpELVFsdWdYdFRWZ1ZtVnNUYmIxUTFtdWZJMFM5Qy1lcXVn0gFyQVVfeXF",
-   "https://news.google.com/rss/articles/CBMiakFVX3lxTFBuUVBXcWM5ZHhjUVNBajN0c3o4RzdSY3VJVEVLLUw5Znk1NmFqdEJQdHlGeVNaREhGb21Hdmxqd3AxeC15TkFBMGRDZWV5V3BfLTRXMVR3eUU3LXBiWW9Ud1RGQ0l0dFdHZEHSAW9BVV95cUxPbEl"
+   "https://news.google.com/rss/articles/CBMiakFVX3lxTFBuUVBXcWM5ZHhjUVNBajN0c3o4RzdSY3VJVEVLLUw5Znk1NmFqdEJQdHlGeVNaREhGb21Hdmxqd3AxeC15TkFBMGRDZWV5V3BfLTRXMVR3eUU3LXBiWW9Ud1RGQ0l0dFdHZEHSAW9BVV95cUxPbEl",
+   "https://news.google.com/rss/articles/CBMibkFVX3lxTE1JbjNWZ19iWENHTnk5bXJhZFpZcWlWRGdQR2c0TmVkQzY1MkYwdnNXaEd1ZUxUMWVvZU5XcG93Nll2WVNqSm15WG93WXNNUzh6dzVuTnd0MWRyMkdEWi00czJQNTVja3VkeHR6TmZB?oc=5",
+   "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5LUFNQY0ZwVnROei1SaU9QNjZoUkMyOWVTSk5hYnM0MmhBTGhLN05GVFkxNzhoVVppOWFJSE5aUGRtSVp1Qk00RENiZ1U3bTBZbG9EVlU2QTY0RXV4X19iZ2FR?oc=5",
+   "https://news.google.com/rss/articles/CBMibEFVX3lxTE1UWERxUUFJYncyRnZtZlltcnB6MTlXYlhkeTZsY3U5d3FhOWRleFpnUUx3Z2tpNDh4eG55OGhxS2kybEo3OVp5LTJ1SjZQSWJaTVQxMmhQSzhEdC1yV2pxSjZQX0dCeGpVdklKdg?oc=5"
   ],
   "dart:222800": [
    "20260805900457",
@@ -3650,9 +3650,6 @@
    "원텍파스텔프로일본승인색소치료시장진출"
   ],
   "title:375500": [
-   "dl이앤씨3분기부진은일시적목표가잠정유지신한투자",
-   "dl이앤씨하안주공9단지재건축우협선정8140억원규모",
-   "dl이앤씨아크로성수거장들과손잡고하이엔드주거기준제시",
    "dl이앤씨성수2구역에글로벌설계진투입아크로성수청사진공개",
    "dl이앤씨성수2구역에세계적설계사집결아크로성수제안",
    "dl이앤씨아크로성수설계공개건축조경글로벌협업",
@@ -3709,7 +3706,10 @@
    "dl이앤씨상대원2구역홍보관개관공사비33당699만원",
    "dl이앤씨자율공시속5대하락마감5만8600원기업주식정보",
    "dl이앤씨상대원2구역조합원대상홍보관열고평당699만원공사비제시",
-   "dl이앤씨4분기도시정비시장공략박차상대원2구역성수2구역집중추진"
+   "dl이앤씨4분기도시정비시장공략박차상대원2구역성수2구역집중추진",
+   "유안타dl이앤씨4분기수주폭증기대",
+   "dl이앤씨아쉬운3q플랜트실적4q수주증가실적회복기대유안타",
+   "dl이앤씨공사비논란속상대원2구역홍보관개관착공언제"
   ],
   "title:095340": [
    "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝",
