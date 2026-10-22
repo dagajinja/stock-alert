@@ -310,10 +310,6 @@
    "https://news.google.com/rss/articles/CBMiXEFVX3lxTFB1UHFIN2VESjdaVkZqU0FzVHd5SVgwWHVLX2VqblczU05kTF95VDZGUXhzSU9pZnFFVk14cmYtbDllTkJweFR3VEhWYjdvLU5CSFZTVjVTb3lCZFNS?oc=5"
   ],
   "news:375500": [
-   "https://news.google.com/rss/articles/CBMibkFVX3lxTE1NUHBlVWlja0I4U2ZVWGhNZTFxRmUzVmwzbmJrVVN6V2MydnpKbFhYdHJUSnM4RFBOQW5DeWdWT29Bam9jTEtmMXp3QVlia2d1YVk2cDVHek9aVW9WLVRtWjNieTR5dmZXSWRjVThR?oc=5",
-   "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9fbHFtNENRek9aS3ZMWGRScEdoc3hlbXNuOVV4R29GZmhVanhhLXUxY2VYOEFMQTVWcUd2VzRKWGZKekc5M050alRvdk1oclNKcS1UbFdpVWswckpRcGJqdnJRTzd3X3FO?oc=5",
-   "https://news.google.com/rss/articles/CBMibEFVX3lxTE9SSE1PZ0VlNXlJU0dzcjBjajVhUFlBaldZeHZSV2kwS2IzQ3hRNlpscW1hbFAyT05GTGg2SDFwSGsxdlRQclU4X2prbjlrZk9mbC1vdVZtOXh1M3puQmNORUxqOGlwNEN6amE4ZA?oc=5",
-   "https://news.google.com/rss/articles/CBMiaEFVX3lxTFA0cDhRcVJQc1VhejlEamJPYUVSZ2w1aVlOZGlyaEhiYVMxbHVXa0lzX0hiMlVjcE9QOEc1bkYwQTE1N3EtWWJtaURiMGZ0U1Qyc2VNUGc1MmgxSkU2WlIzYjQ3WjFVUnoy?oc=5",
    "https://news.google.com/rss/articles/CBMibEFVX3lxTE51TkFTelN4WnBCelJQUWFyVG1LXzNtOU1qOWExSnlwdlJ1dmRnN1B4WTRzeUlDNTNTb3dubEo4Z1BsMGJnSWxvZlB3SUxsT1doMXBySkNoY0FEVmpTME5jRUY5b0xhWVY1VkthTA?oc=5",
    "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9kTTViLTJ0Um5YcWtWU1FmZlNfN3l1WV9YSy1BSmFvX05GZ3YzbkFIbGI5TzNJTmZUR25aQnhxSDVNLW9zc3ZxS2p1c00xVWxBVTJ4cjFrcDBGdw?oc=5",
    "https://news.google.com/rss/articles/CBMibkFVX3lxTE5GdjdOazk5bU52cmtHQnpmZy05Ykxva0VVTE5weDNYcEstbDVtQXprUmdoMDE3aXBpRjRhemN1bHpYdFVINDhleDhBOWN4MnJEdHRyenJUUVQyOUZOOHVYeEl5VlhGYktBR3BMU0dB?oc=5",
@@ -709,7 +705,11 @@
    "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5LOG1wejlXWDhTa0NQUTF6aE9BZUo4c2NTeF9aakdyQ3JkQmkxZzJkREhvbk9sd0NVQm9iSk54Qk5tdVo1LW9XTzZneUZVS1FXM2fSAVNBVV95cUxQS2F1c3FEY05uekFFM2E4R25VdTlRbnNoc3J",
    "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBWTDBmWjAxU0JnM3V6MVVJUXl4RVFXU0JraGROM3RVSEhwUlZ5dlNyY2hXdm8zZnR2RnE2SzlyWE5LaklyOWhiWHktam4tZDBPZzVHWmZtV2RXVXNFT0tGUjJoTzlNN2RG0gFrQVVfeXFMTXYySFB",
    "https://news.google.com/rss/articles/CBMib0FVX3lxTFAwN0llMDcwd3hrZlRLT205Sjl3V2kyQkZsTTRFTUpPelp3YVpFVEtDanN3TkFWS2pjQXdTZGJDM2NKRS1aRXh4WEZCdjJ2RXlPUFlHdFlFc0hlcjZWTk52bVRqLXNTZWxLaDFnRjN0Yw?oc=5",
-   "https://news.google.com/rss/articles/CBMia0FVX3lxTE12MkhQSWp6QU82MFZaQzJYSlVIbDVLcHdubXVtTV81eUpqaFluR3U2NFFoWVltNXlrd3RkVlI5NzB4ZHlBRi0ycTk1N1JzSFJFczRzY2lsRk41OWVlNUdISGNVZ3BYRFJ4NnFN0gFrQVVfeXFMTXY"
+   "https://news.google.com/rss/articles/CBMia0FVX3lxTE12MkhQSWp6QU82MFZaQzJYSlVIbDVLcHdubXVtTV81eUpqaFluR3U2NFFoWVltNXlrd3RkVlI5NzB4ZHlBRi0ycTk1N1JzSFJFczRzY2lsRk41OWVlNUdISGNVZ3BYRFJ4NnFN0gFrQVVfeXFMTXY",
+   "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1TOXJ4Yzl4S3R1a3F0dVk0bmp0TGUwd3U1d2VXZlVwZUlqb3l1Q2RCZzlzZEd5eHZib0g3a2Qzcks0dno1YWk5cF9uUHJ5MmlINk5oNWdfV1Y5UWtX?oc=5",
+   "https://news.google.com/rss/articles/CBMiaEFVX3lxTE92R1FpUkxkMEpJSDNmaVR2Tk1iQTYtYjhBdEZLbDJjZGpqNzVUNWlWcFJHVlhsVS1mTFZwNENTTUdScUxtUlI3YWVjb1FWRl93OWhMMnU5UWMydF9GQ3NRYkVWNllsYllR?oc=5",
+   "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1kaFVXOGJPcWpadTBkTW1mZ01iZHdxeGlPd3FjN0hmQm5OOGhRdlFIS1ZldUVISVp2VlctRTFhR0dUVzdRdS1KR2FrbmVLTGtwM1dQejcwZmp0aVJZYS1ZNVZXei1FU1XSAWtBVV95cUxNdjJIUEl",
+   "https://news.google.com/rss/articles/CBMiXEFVX3lxTE05aWhhN2tUdC00MlhvakpYX1dBNk5ocVlTRXBsajY2TGRDVFozY1k5U2xzSmk1eDRNWTNYOWdfeXVOWmxWeFE1TlAtSkQzemJOQlR1dzlyYkFKWlhl?oc=5"
   ],
   "dart:222800": [
    "20260805900457",
@@ -3699,7 +3699,6 @@
    "원텍일감도투자금도김종원회장일가로이사회승인불투명"
   ],
   "title:375500": [
-   "dl이앤씨상대원2구역그라투스홍보관개관성남대표랜드마크만들것",
    "dl이앤씨성남상대원2구역재개발홍보관개관조합원소통강화",
    "dl이앤씨상대원2구역조합원홍보관개관사업비전공유",
    "dl이앤씨성남상대원2구역대단지랜드마크로완성",
@@ -3758,7 +3757,8 @@
    "dl이앤씨아크로성수로한강변랜드마크도전",
    "dl이앤씨12개사업지모듈러241개소추진특허487건기반기술경쟁력강화",
    "dl이앤씨품질이브랜드만든다4년연속하자판정제로",
-   "dl이앤씨성수2지구한강조망설계공개11월시공사선정"
+   "dl이앤씨성수2지구한강조망설계공개11월시공사선정",
+   "dl이앤씨e편한세상동탄역어반원건축설계혁신상수상"
   ],
   "title:095340": [
    "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝",
