@@ -732,8 +732,6 @@
    "20261013000275"
   ],
   "news:222800": [
-   "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBiWEVVQUVYM0x3UzFlSW93VkJwTnJCUW9kNENLVVV3a1k2dGYzNDY5aktTYWdsWEpnYm5MTk9PUmJhYTNKNEVYdm9EWERSN0MyTlNQRlZDRWtsTlFoTmpxRmVDWGtuaW1R?oc=5",
-   "https://news.google.com/rss/articles/CBMiS0FVX3lxTE05UlpESEd5eTdBNkZSRkcydF9RQUtzQzlwcHFnRDJTTEZ4dnNnSFpud3hUa0t0dVhMd3pzRDE4TEtpTjg3OWUzM2E4WQ?oc=5",
    "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1XZlVrMHpZMktJS1NBUWNDWlBWX3VGaExsMHRFMlAzdTVqM0pCWEROZEx1NGE2MUo0aTlHcjA5bGlDUElfTmVUQnI3TnRreGFJZjNqZw?oc=5",
    "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5kRmdlaXZmdnpDTTZZRWJQNW9GQm5DdkR0b0pDaDVOZERWR1F3MHpheWcxdHR0cVhRZm1VUFpkcEFnWXRQMDZMaUgxWHFsaEcybDVEUg?oc=5",
    "https://news.google.com/rss/articles/CBMickFVX3lxTFB4RUl2bjl1TDNfS0lJYW5SUE5ucUJHX1lnVVlCV0JTbTRETDBmVjJZMUpDZ2RPXy11N0UzS2Q4ZHgxUTdPaUU1UVlmdFJvdm5PeUxwbUJzaXlmRDNodHRrM3FKdUpCZklTVDA1cHRQRWhydw?oc=5",
@@ -1131,7 +1129,9 @@
    "https://news.google.com/rss/articles/CBMid0FVX3lxTE9xTVVBYlNGSnhLUWtVZGJWSFFoN0xuSVdaU0J3am43REdTdzl5RnF6ejhWODJfU3dEOEhTbWNEaHJxcXFfUEtnd1BiVWJqU2dFSHowMzZvQjFfUHFnODZwM0lHdC1yM3lJcDZCTVhqVjdTVXZYTVd",
    "https://news.google.com/rss/articles/CBMiXEFVX3lxTE93XzNmeWNDQlowTE1uTEZHQUowTlBnUWpMU0JmRzkyT2t2bUNhNlVjVnA4eWIza2RZdUhkRGZtclJSSnpZd0ZNM2dtNE1qbkFHQ0RLYXFCX1VhMDVs?oc=5",
    "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9IZFJhb2V4X2x5TmxxelU4V1B0S1dVZ25qNUxCYWMzOVRIbDBJSVJmWDQ5UVZ3UnRsNTdfc0xJYXlIelkwV0p6VWFCUEU2WHNpRi10NjBpZFJ3cnBjZkt6S3hUV0FxUQ?oc=5",
-   "https://news.google.com/rss/articles/CBMickFVX3lxTE0xU1dKUi1OdW8zQzJPeC1KV1hkY3pwVEp0aDJlRVppLS1lOFJyRzVOVFhUSktkUG1LclBVTDY0bGdXNmV2Q01ZbDl5amlMS2FWMkZiZW53SDc3dHREUTlNZmp4UW02RnJGOGVXWlllSlFiQdIBckF"
+   "https://news.google.com/rss/articles/CBMickFVX3lxTE0xU1dKUi1OdW8zQzJPeC1KV1hkY3pwVEp0aDJlRVppLS1lOFJyRzVOVFhUSktkUG1LclBVTDY0bGdXNmV2Q01ZbDl5amlMS2FWMkZiZW53SDc3dHREUTlNZmp4UW02RnJGOGVXWlllSlFiQdIBckF",
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTE9EeDNMelRZaHpvV2t5MFlsOFdaR0xmcElxcjFSWE9lUEFRYkM1UnNVc0ZobG9YeG9PT24zU3V6aGtQYklKSmdqS0ExSWpIOVh2aHdDUTZsdDJUUVFzcTRrYXpQMmUxWDBhS3l6enRhLXY1UknSAXd",
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTE5lN2Y4NE5yOFk3dWxQNHBJTlp1VWI0Ri1QS21iRlVma3RnbmVlV2ZuQi1TOXg5eFB6REZWa21PS0dGSlFKY3FPUnZCc2ppQnNfeEpVdDJvUFhCSTUwZVlzb1hrem9wUmdYX0ZjRklWaUJ4XzDSAXd"
   ],
   "news:458870": [
    "https://news.google.com/rss/articles/CBMie0FVX3lxTE1yOW5tYkdSRFJqdFJtLWpveEdYYVJDLWZWUTQxNFM0T1F0cmVRTkFZNmczYTl1ZFZucHVhMjZ2T2Z4OXFXMFRFaTZIVUJ0NHg4aTNBSHBQeGdHY2JrMXRpWEJTR3dWN01xTVNndVpxeTd5ejNkeFF",
@@ -2586,7 +2586,13 @@
    "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBhOTJoVmNoYmFIRmY0VGdZNUZYYlo0QzFITVNrS293ekJ5eEhZQzhKTlJKejloVVR6VXNHS3dIeGFmbkVicm9tZFE2aDh5Y2dfczBOV2ZMY25wdThP?oc=5",
    "https://news.google.com/rss/articles/CBMid0FVX3lxTE10RmczTndRdWhhNjgxZ3Z1S3htdGFPZ0lqeTdQZTJNRzdiblhSMEMwTjQtcU9WS0ZOeG9xSmYyMEhiNzZDaHF2cFZ1anpXUF84QmJaZkM4RGhpRG9GcW50Wk9lUDZUaGdHTE1tN3FQcnp3VU1MMkJ",
    "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1XVDM5ZFFpUWRzbEdnMTkxLVBtelF0NWhmVFBIcmJxVF9BdHFSMlF6OG93dVZIblBHcVZCWE5JSjZSOWlPWkJfaWZqOWxaTGpPemV3aGRVb2JHREFUQVFBMlgwNnE?oc=5",
-   "https://news.google.com/rss/articles/CBMibEFVX3lxTFBZaC04VnFlLXFzdmZwbjlhRWUwQUp0XzV3TE9LUXBIR0c5V0RUNlQycnRSai10bWFNN091bWVsMkQxMDZxTzZubUREVG9HS0ZmQnZOQldXaDBzNWZ3X194WnBQZEF4REJfY3N3ZA?oc=5"
+   "https://news.google.com/rss/articles/CBMibEFVX3lxTFBZaC04VnFlLXFzdmZwbjlhRWUwQUp0XzV3TE9LUXBIR0c5V0RUNlQycnRSai10bWFNN091bWVsMkQxMDZxTzZubUREVG9HS0ZmQnZOQldXaDBzNWZ3X194WnBQZEF4REJfY3N3ZA?oc=5",
+   "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5jMUU1eklBLVVSR2JRdktkNVU2aWVIaG5ra3dKVUhaSkYxSnBIdUZZU0FDQUpfNGZXOU9YNWhSU1A4TjNxMkNXZ2RDTGZXRkNiLTNvMTJvdnhiS3lta2FVeXVDdHo?oc=5",
+   "https://news.google.com/rss/articles/CBMic0FVX3lxTFBKdlZfNURCaTZWUWNWVlZvWXRwUHEyQTdpQkZ1Nk9SQzl4bTBJV19mMnl1bnhzMDJ6UG5fYk9sRjRZUjktS2RoWlhIREx0RlJMN3daaGN4ZjlDbE5EUjNnTGtKdzRXSWh1VVp5djB3bXh3U00?oc=",
+   "https://news.google.com/rss/articles/CBMie0FVX3lxTE85Z255VmhpQ1BfOWJzUmtOeVNpLUNFV1hQTXY5eE9ORVdFZjRidTUyWUkyZ0RfOHFUNWs4YmJGQnFiN25OZTZDU2hSbTJMNEozVDRHUGFHRWJFYk5XM1hYOVF2WXRyT1UzMVl4Q3BNTjVYZFRvODN",
+   "https://news.google.com/rss/articles/CBMie0FVX3lxTE93V1BtRU0wN0l3RDhfWmRSREEtRjZFdGJVZzFld0pQcEtUSXgwREQ2MXB3VjBWaWxoRklJendBYkREQ01LLWtqazd0dkhwTzhZbWpMdG9sQnI5MUpQZWRoM1BqVmR2d2cyOXdNRTh1VDN4Y2dudlM",
+   "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9ObzhBdGJLUkV3ajR6bTFLdjRjOW5YUTFSbFVmWjJjd0NTeFVWLWEzanRFdVprMG85eUU2cmpORi1ON0pmSE1pSUdsZHZxV3RxUVlOdk5Mek5OczExeTM2dtIBeEFVX3lxTFA3QS05b05taDVIOEZ",
+   "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5OaDA4dmFkOHBFMHFaMjBiRVZPNzVpbVFmbXRtSGwtZGUteERTU0FMeWgyMHMwTi1WakM5bHN6V25TTlVWYnpqQWVOTWVhU1JlUUNBd1F3bW1XWlZk?oc=5"
   ],
   "news:039440": [
    "https://news.google.com/rss/articles/CBMia0FVX3lxTFBNX2tubmZma1VjYVc2LW5BcTd6dVFFQ1gzUFR4QzA2VE13a01HWkVWRlVKNGxycURGaWpfM1M1VmFZU3B1bjNWWHhxOGxGNXRqckJUT2xrd0Q3TXVuUXpvdWhsRHN6QnFYWjlv0gFvQVVfeXFMTVQ",
@@ -3508,7 +3514,9 @@
    "20260928900382",
    "20261007000292",
    "20261016900140",
-   "20261016900141"
+   "20261016900141",
+   "20261027900052",
+   "20261027900053"
   ],
   "dart:039440": [
    "20260814001073"
@@ -3524,8 +3532,6 @@
    "20261008000590"
   ],
   "title:222800": [
-   "심텍15만원선에서138하락반도체기판수요점검",
-   "심텍홀딩스투자분석20260929",
    "심텍10이상주주심텍홀딩스소유주식수량8만1571주감소소유지분율106p하락",
    "심텍주주국민연금공단측주식등보유비율105p증가",
    "소부장시장이계속되고있다하나마이크론심텍두산테스나",
@@ -3583,7 +3589,9 @@
    "환율부담에도성장세이어간다심텍socammfccsp주목",
    "심텍222800눌릴때마다물량모아둘기회로보이며이후전망및대응전략",
    "심텍장중3대하락전환사채전환주추가상장",
-   "심텍432조정ai메모리기판기대와투자비부담"
+   "심텍432조정ai메모리기판기대와투자비부담",
+   "ai서버투자확대에pcbfpcb관련주기세등등심텍삼성전기주목을",
+   "심텍삼성전기상승랠리ai반도체기판주불기둥"
   ],
   "title:475150": [
    "sk이터닉스연료전지200mw확보데이터센터전력수요도겨냥",
@@ -3772,8 +3780,6 @@
    "dl이앤씨창립87주년e편한세상아크로로주거기준재편기업산업"
   ],
   "title:095340": [
-   "코스닥뚝이오테크닉스isc대한광통신rfhic은활짝",
-   "isc대아티아이내일장예감좋은대박종목은",
    "전기에너지자원isc과정평가형자격교원실무역량높인다",
    "2026년9월3일알테오젠두산퓨얼셀아모레퍼시픽코스맥스한국콜마한솔케미칼isc현대건설두산에너빌리티케이뱅크카카오페이",
    "isc투자분석20260902",
@@ -3829,7 +3835,11 @@
    "납품넘어생산계획연계하나마이크론isc한미ai후공정공략",
    "iscai서버부품사업진출내년1분기양산",
    "환경isc환경산업맞춤형ai인재전략방안모색",
-   "환경isc환경산업인적자원개발발전모색"
+   "환경isc환경산업인적자원개발발전모색",
+   "아이에스시3분기영업익218억원ai데이터센터비중확대",
+   "isc3q연결영업이익218억전년비25",
+   "isc2026년3분기영업이익218억4200만원으로전년동기대비254증가",
+   "isc2026년연결매출3050억원영업이익1000억원전망"
   ],
   "title:458870": [
    "씨어스30초심전도로심방세동예측ai특허등록",
