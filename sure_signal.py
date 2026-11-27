@@ -57,6 +57,9 @@ def main():
     for m in ('KOSPI', 'KOSDAQ'):
         x = pd.DataFrame(get(f'https://finance.daum.net/api/market_index/days?market={m}&page=1&perPage=60&pagination=true')['data'])
         x['date'] = pd.to_datetime(x.date.str[:10]); idx[m] = x.set_index('date').sort_index().tradePrice.astype(float)
+    global TODAY, MODE
+    if MODE == 'test':  # 수동 테스트: 마지막 거래일 기준으로 확정 판정을 돌리고 결과를 무조건 보냄
+        TODAY = idx['KOSDAQ'].index[-1].date(); MODE = 'final'; tg(f'[테스트] 확실 신호 알림 연결 확인 — {TODAY} 종가 기준으로 판정합니다')
     if idx['KOSDAQ'].index[-1].date() != TODAY:
         print('휴장 또는 오늘 데이터 없음'); return
 

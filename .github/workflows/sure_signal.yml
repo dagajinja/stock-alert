@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'pre(사전 후보) 또는 final(확정)'
+        description: 'test(연결 확인) / pre(사전 후보) / final(확정)'
         required: true
-        default: 'final'
+        default: 'test'
 
 jobs:
   scan:
