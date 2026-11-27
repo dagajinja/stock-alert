@@ -1,0 +1,37 @@
+name: 확실 신호 알림
+
+on:
+  schedule:
+    - cron: '5 6 * * 1-5'    # 한국 15:05 사전 후보 (GitHub이 5~15분 늦게 돌 수 있음)
+    - cron: '42 6 * * 1-5'   # 한국 15:42 확정
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'pre(사전 후보) 또는 final(확정)'
+        required: true
+        default: 'final'
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pandas
+      - name: 실행
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            MODE="${{ github.event.inputs.mode }}"
+          elif [ "${{ github.event.schedule }}" = "5 6 * * 1-5" ]; then
+            MODE=pre
+          else
+            MODE=final
+          fi
+          python sure_signal.py "$MODE"
